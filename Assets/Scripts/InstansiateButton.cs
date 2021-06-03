@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstansiateButton : MonoBehaviour
+namespace CubeCastle
 {
-    [SerializeField] GameObject prefab;
-    public void CreateObject()
+    public class InstansiateButton : MonoBehaviour
     {
-        GameObject newObject = Instantiate(prefab);
-        newObject.name
-        
+        [SerializeField] GameObject prefab;
+        public void CreateObject()
+        {
+            GameObject newObject = Instantiate(prefab);
+            newObject.name = newObject.name.Replace("(Clone)", "");
+        }
     }
 }

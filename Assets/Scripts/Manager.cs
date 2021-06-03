@@ -1,30 +1,137 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Timers;
 
-public class Manager : MonoBehaviour
+namespace CubeCastle
 {
-    [SerializeField] GameObject objectPrefab;
-    [SerializeField] List<GameObject> cubes;
-    // Start is called before the first frame update
-    void Start()
+    public class Manager : MonoBehaviour
     {
+        [SerializeField] List<GameObject> buildings;
+        [SerializeField] List<GameObject> houses;
+        [SerializeField] List<GameObject> mills;
+        [SerializeField] List<GameObject> mines;
+
+
+        int Population = 5;
+        int Wood;
+        int Gold;
+
+        public int GetPopulation { get { return Population; } }
+        public int GetStoredWood { get { return Wood; } }
+        public int GetStoredGold { get { return Gold; } }
+
+        static Manager instance;
+        public static Manager Instance { get { return instance; } }
+
+
+        [SerializeField] TextMeshProUGUI notif;
+        public TextMeshProUGUI Notification { get { return notif; } }
+
+
+        float timeBetweenGathers = 1f;
+        float timeOfNextGather;
+
+        float timer;
+        void Awake()
+        {
+            if (instance != null)
+            {
+                if (instance != this)
+                {
+                    Destroy(this);
+                }
+            }
+            else
+            {
+                instance = this;
+            }
+            DontDestroyOnLoad(this);
+        }
+        // Start is called before the first frame update
+        void Start()
+        {
+            
+        }
+
         
-    }
-    public void AddtoCubes(GameObject cube)
-    {
-        cubes.Add(cube);
-    }
-    // Update is called once per frame
-    void Update()
-    {
+        public void AddtoHouses(GameObject house)
+        {
+            houses.Add(house);
+            Population += house.GetComponent<BuildingData>().ResourceMax;
+        }
+        public void AddtoBuildings(GameObject building)
+        {
+            buildings.Add(building);
+        }
+        public void AddtoMills(GameObject mill)
+        {
+            mills.Add(mill);
+        }
+        public void AddtoMines(GameObject mine)
+        {
+            mines.Add(mine);
+        }
+        public bool CheckBuildingPositions(GameObject building)
+        {
+            foreach (GameObject test in buildings)
+            {
+                if (building.transform.position == test.transform.position)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
         
-    }
-    private void OnGUI()
-    {
-        GUILayout.BeginArea(new Rect(20, 20, 250, 120));
-        GUILayout.Label("Screen pixels: " + Camera.main.pixelWidth + ":" + Camera.main.pixelHeight);
-        GUILayout.Label("Mouse position: " + Input.mousePosition);
-        GUILayout.EndArea();
+
+        
+        public void TakePopulation(int amount)
+        {
+            Population -= amount;
+        }
+        public void TakeWood(int amount)
+        {
+            Wood -= amount;
+        }
+        public void TakeGold(int amount)
+        {
+            Gold -= amount;
+        }
+
+        public void AddWood(int amount)
+        {
+            Wood += amount;
+        }
+        public void AddGold(int amount)
+        {
+            Gold += amount;
+        }
+
+        public IEnumerator TextFade(string text)
+        {
+            notif.text = text;
+            yield return new WaitForSeconds(2);
+            notif.text = "";
+        }
+        // Update is called once per frame
+        void Update()
+        {
+            timer += Time.deltaTime;
+            if(timer > timeOfNextGather)
+            {
+                foreach(GameObject building in buildings)
+                {
+                    building.GetComponent<BuildingData>().ResourceGather();
+                }
+                timeOfNextGather += timeBetweenGathers;
+            }
+            
+
+        }
+
+      
     }
 }

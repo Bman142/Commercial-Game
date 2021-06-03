@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7059954525776759755
+--- !u!1 &189118479704760436
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7059954525776759756}
-  - component: {fileID: 7059954525776759759}
-  - component: {fileID: 7059954525776759758}
-  - component: {fileID: 7059954525776759753}
-  - component: {fileID: 7059954525776759752}
-  - component: {fileID: 7059954525576593336}
-  - component: {fileID: 750647745989684561}
+  - component: {fileID: 8564925895278965036}
+  - component: {fileID: 8562987708158544221}
+  - component: {fileID: 2578843553837026568}
+  - component: {fileID: 6769253343153150862}
+  - component: {fileID: 2109281865972271427}
+  - component: {fileID: 6059083232662067646}
+  - component: {fileID: -7212407075291224720}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7059954525776759756
+--- !u!4 &8564925895278965036
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
+  m_GameObject: {fileID: 189118479704760436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8007867, y: 29.6, z: 2.0837536}
+  m_LocalPosition: {x: -92.3, y: 27.7, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7059954525776759759
+--- !u!33 &8562987708158544221
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7059954525776759758
+  m_GameObject: {fileID: 189118479704760436}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2578843553837026568
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
+  m_GameObject: {fileID: 189118479704760436}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,26 +86,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7059954525776759753
-BoxCollider:
+--- !u!135 &6769253343153150862
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
+  m_GameObject: {fileID: 189118479704760436}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7059954525776759752
+--- !u!114 &2109281865972271427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
+  m_GameObject: {fileID: 189118479704760436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b97deaafadc87442a2de0d5003310a9, type: 3}
@@ -113,32 +113,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapFactor: 10
   building: 1
---- !u!114 &7059954525576593336
+--- !u!114 &6059083232662067646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
+  m_GameObject: {fileID: 189118479704760436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5d1048821bc85f4baa8bcee1acd9397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 0
+  buildingType: 2
   buildingLevel: 1
   resourcePerTime: 0
   resourceMax: 0
   resourceCurrent: 0
---- !u!114 &750647745989684561
+--- !u!114 &-7212407075291224720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
+  m_GameObject: {fileID: 189118479704760436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f3157aa38a393f41acd5a1694b648e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  building: 1
+  buildingType: 2

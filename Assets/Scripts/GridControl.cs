@@ -1,41 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GUILayout;
+using TMPro;
 
-public class GridControl : MonoBehaviour
+namespace CubeCastle
 {
-    Transform centrePoint;
-    new Camera camera;
-    [SerializeField] float snapFactor;
-    private Vector3 point;
-    public Vector3 Point { get { return point; } }
-    bool building = true;
-    Vector3 mousePos = Vector3.zero;
-    // Start is called before the first frame update
-    void Start()
+    public class GridControl : MonoBehaviour
     {
-        camera = Camera.main;
-        centrePoint = this.transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (building)
+        Transform centrePoint;
+        new Camera camera;
+        [SerializeField] float snapFactor;
+        private Vector3 point;
+        [SerializeField] bool building = true;
+        public bool Building { set { building = value; } }
+        Vector3 mousePos = Vector3.zero;
+        TextMeshProUGUI notif;
+        // Start is called before the first frame update
+        void Start()
         {
-            if (Input.GetMouseButtonDown(0)) { building = false; }
-            mousePos.x = Input.mousePosition.x;
-            mousePos.y = Input.mousePosition.y;
-
-            RaycastHit hit;
-            Physics.Raycast(camera.ScreenPointToRay(mousePos), out hit);
-            point = hit.point;
-            point.y = 5;
-
-            centrePoint.position = new Vector3(Mathf.Round(point.x/snapFactor)*snapFactor, point.y, Mathf.Round(point.z/snapFactor)*snapFactor);
+            camera = Camera.main;
+            centrePoint = this.transform;
+            notif = Manager.Instance.Notification;
         }
-        else 
-        { }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (building)
+            {
+                mousePos.x = Input.mousePosition.x;
+                mousePos.y = Input.mousePosition.y;
+
+                RaycastHit hit;
+                Physics.Raycast(camera.ScreenPointToRay(mousePos), out hit);
+                point = hit.point;
+                point.y = 5;
+
+                centrePoint.position = new Vector3(Mathf.Round(point.x / snapFactor) * snapFactor, point.y, Mathf.Round(point.z / snapFactor) * snapFactor);
+            }
+            
+        }
+        
     }
-    
 }
