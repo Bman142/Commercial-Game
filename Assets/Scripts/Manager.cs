@@ -18,6 +18,9 @@ namespace CubeCastle
         int Wood;
         int Gold;
 
+        int woodCap;
+        int goldCap;
+
         public int GetPopulation { get { return Population; } }
         public int GetStoredWood { get { return Wood; } }
         public int GetStoredGold { get { return Gold; } }
@@ -68,10 +71,12 @@ namespace CubeCastle
         public void AddtoMills(GameObject mill)
         {
             mills.Add(mill);
+            woodCap += mill.GetComponent<BuildingData>().ResourceMax;
         }
         public void AddtoMines(GameObject mine)
         {
             mines.Add(mine);
+            goldCap += mine.GetComponent<BuildingData>().ResourceMax;
         }
         public bool CheckBuildingPositions(GameObject building)
         {
@@ -125,6 +130,14 @@ namespace CubeCastle
                 foreach(GameObject building in buildings)
                 {
                     building.GetComponent<BuildingData>().ResourceGather();
+                    if(Wood >= woodCap)
+                    {
+                        Wood = woodCap;
+                    }
+                    if(Gold >= goldCap)
+                    {
+                        Gold = goldCap;
+                    }
                 }
                 timeOfNextGather += timeBetweenGathers;
             }
