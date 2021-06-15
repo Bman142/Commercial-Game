@@ -8,7 +8,7 @@ namespace CubeCastle
     public class UpdateResource : MonoBehaviour
     {
         TextMeshProUGUI stat;
-        enum Resources { Wood, Population, Gold}
+        enum Resources { Wood, PopulationAvailable, PopulationTotal, Gold}
         [SerializeField] Resources resource;
         private void Start()
         {
@@ -19,8 +19,11 @@ namespace CubeCastle
         {
             switch (resource)
             {
-                case Resources.Population:
-                    stat.text = "Population: " + ResourceManager.Instance.GetAvaliblePopulation.ToString();
+                case Resources.PopulationAvailable:
+                    stat.text = "Avalible Population: " + ResourceManager.Instance.GetAvailablePopulation.ToString();
+                    break;
+                case Resources.PopulationTotal:
+                    stat.text = "Total Population: " + ResourceManager.Instance.GetTotalPopulation.ToString();
                     break;
                 case Resources.Wood:
                     stat.text = "Wood: " + ResourceManager.Instance.GetStoredWood.ToString();

@@ -7,6 +7,7 @@ namespace CubeCastle
 {
     public class CursorManager : MonoBehaviour
     {
+        [SerializeField] float speed = 10f;
         new Camera camera;
         Vector3 mousePos = Vector3.zero;
         // Start is called before the first frame update
@@ -29,8 +30,22 @@ namespace CubeCastle
                 }
                 
             }
-            
-            
+            if (Input.GetMouseButton(1))
+            {
+                if (Input.GetAxis("Mouse X") > 0)
+                {
+                    camera.transform.position += new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
+                                               0.0f, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
+                }
+
+                else if (Input.GetAxis("Mouse X") < 0)
+                {
+                    camera.transform.position += new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
+                                               0.0f, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
+                }
+            }
+
+
         }
     }
 }

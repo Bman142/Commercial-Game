@@ -39,7 +39,7 @@ namespace CubeCastle
                                 }
                                 break;
                             case BuildingData.BuildingStyle.Mill:
-                                if (ResourceManager.Instance.GetAvaliblePopulation >= 5)
+                                if (ResourceManager.Instance.GetAvailablePopulation >= 5)
                                 {
                                     Manager.Instance.AddtoMills(this.gameObject);
                                     ResourceManager.Instance.TakePopulation(5);
@@ -67,7 +67,7 @@ namespace CubeCastle
                     }
                     else
                     {
-                        StartCoroutine(Manager.Instance.TextFade(this.gameObject.name + " Overlaps existing building"));
+                        StartCoroutine(Manager.Instance.TextFade(this.gameObject.name + " Overlaps Existing Building"));
 
                     }
                 }

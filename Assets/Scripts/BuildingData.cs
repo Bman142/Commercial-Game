@@ -7,6 +7,7 @@ namespace CubeCastle
 {
     public class BuildingData : MonoBehaviour
     {
+        [SerializeField] Mesh levelTwoMesh;
         public enum BuildingStyle { House, Mine, Mill}
         [SerializeField] BuildingStyle buildingType;
         public BuildingStyle BuildingType { get { return buildingType; } }
@@ -64,6 +65,13 @@ namespace CubeCastle
             {
                 ResourceManager.Instance.IncreaseMaxGold = resourceMax / 2;
             }
+
+            /* Future Plans:
+             * Once I have access to the new models for other levels
+             * I will replace this code with code to instansiate a new version of 
+             * the building at the correct level using prebuilt prefabs
+             *  
+             */
         }
         public void ResourceGather()
         {

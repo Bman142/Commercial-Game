@@ -18,7 +18,7 @@ namespace CubeCastle
         [SerializeField] int storedGold;
 
         public int GetTotalPopulation { get { return totalPopulation; } }
-        public int GetAvaliblePopulation { get { return avaliblePopulation; } }
+        public int GetAvailablePopulation { get { return avaliblePopulation; } }
         public int GetStoredWood { get { return storedWood; } }
         public int GetStoredGold { get { return storedGold; } }
 

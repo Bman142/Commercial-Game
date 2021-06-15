@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Timers;
 
 namespace CubeCastle
 {
@@ -18,8 +17,8 @@ namespace CubeCastle
         public static Manager Instance { get { return instance; } }
 
 
-        [SerializeField] TextMeshProUGUI notif;
-        public TextMeshProUGUI Notification { get { return notif; } }
+        [SerializeField] TextMeshProUGUI notification;
+        public TextMeshProUGUI Notification { get { return notification; } }
 
         bool buildingMode;
         public bool BuildingMode { get { return buildingMode; } set { buildingMode = value; } }
@@ -50,7 +49,7 @@ namespace CubeCastle
         }
         void StartUpCheck()
         {
-            if(ResourceManager.Instance.GetAvaliblePopulation != 5)
+            if(ResourceManager.Instance.GetAvailablePopulation != 5)
             {
                 ResourceManager.Instance.AddPopulation(5);
             }
@@ -99,10 +98,12 @@ namespace CubeCastle
 
         public IEnumerator TextFade(string text)
         {
-            notif.text = text;
+            notification.text = text;
             yield return new WaitForSeconds(2);
-            notif.text = "";
+            notification.text = "";
         }
+
+
         // Update is called once per frame
         void Update()
         {
