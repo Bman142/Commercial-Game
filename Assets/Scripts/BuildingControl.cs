@@ -27,10 +27,10 @@ namespace CubeCastle
                         {
                             
                             case BuildingData.BuildingStyle.House:
-                                if (Manager.Instance.GetStoredGold >= 20)
+                                if (ResourceManager.Instance.GetStoredGold >= 20)
                                 {
                                     Manager.Instance.AddtoHouses(this.gameObject);
-                                    Manager.Instance.TakeGold(20);
+                                    ResourceManager.Instance.TakeGold(20);
                                     SetBuilding();
                                 }
                                 else
@@ -39,10 +39,10 @@ namespace CubeCastle
                                 }
                                 break;
                             case BuildingData.BuildingStyle.Mill:
-                                if (Manager.Instance.GetPopulation >= 5)
+                                if (ResourceManager.Instance.GetAvaliblePopulation >= 5)
                                 {
                                     Manager.Instance.AddtoMills(this.gameObject);
-                                    Manager.Instance.TakePopulation(5);
+                                    ResourceManager.Instance.TakePopulation(5);
                                     SetBuilding();
                                 }
                                 else
@@ -51,10 +51,10 @@ namespace CubeCastle
                                 }
                                 break;
                             case BuildingData.BuildingStyle.Mine:
-                                if (Manager.Instance.GetStoredWood >= 20)
+                                if (ResourceManager.Instance.GetStoredWood >= 20)
                                 {
                                     Manager.Instance.AddtoMines(this.gameObject);
-                                    Manager.Instance.TakeWood(20);
+                                    ResourceManager.Instance.TakeWood(20);
                                     SetBuilding();
                                 }
                                 else
@@ -82,6 +82,7 @@ namespace CubeCastle
                 {
                     building = false;
                     this.GetComponent<GridControl>().Building = false;
+                    Manager.Instance.BuildingMode = false;
                     Manager.Instance.AddtoBuildings(this.gameObject);
                 }
             }

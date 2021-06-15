@@ -20,13 +20,13 @@ namespace CubeCastle
             switch (resource)
             {
                 case Resources.Population:
-                    stat.text = "Population: " + Manager.Instance.GetPopulation.ToString();
+                    stat.text = "Population: " + ResourceManager.Instance.GetAvaliblePopulation.ToString();
                     break;
                 case Resources.Wood:
-                    stat.text = "Wood: " + Manager.Instance.GetStoredWood.ToString();
+                    stat.text = "Wood: " + ResourceManager.Instance.GetStoredWood.ToString();
                     break;
                 case Resources.Gold:
-                    stat.text = "Gold: " + Manager.Instance.GetStoredGold.ToString();
+                    stat.text = "Gold: " + ResourceManager.Instance.GetStoredGold.ToString();
                     break;
             }
         }

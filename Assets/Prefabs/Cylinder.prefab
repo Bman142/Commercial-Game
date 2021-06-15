@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8296360358885021818}
   - component: {fileID: 7665985100504034447}
   - component: {fileID: -9058850085714689364}
+  - component: {fileID: 4003778291657501475}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -145,3 +146,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building: 1
   buildingType: 1
+--- !u!114 &4003778291657501475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252899755819304401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1418c2e90cb1e3f428632f4ceef65947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  houseUpgradeText: {fileID: 0}
+  millUpgradeText: {fileID: 0}
+  mineUpgradeText: {fileID: 1035246292494653261, guid: 83d43950d51855f4cb1c42a17739edac, type: 3}

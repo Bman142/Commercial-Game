@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GUILayout;
-using TMPro;
 
 namespace CubeCastle
 {
@@ -15,13 +13,11 @@ namespace CubeCastle
         [SerializeField] bool building = true;
         public bool Building { set { building = value; } }
         Vector3 mousePos = Vector3.zero;
-        TextMeshProUGUI notif;
         // Start is called before the first frame update
         void Start()
         {
             camera = Camera.main;
             centrePoint = this.transform;
-            notif = Manager.Instance.Notification;
         }
 
         // Update is called once per frame

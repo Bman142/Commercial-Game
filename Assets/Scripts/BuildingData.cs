@@ -42,7 +42,29 @@ namespace CubeCastle
             
 
         }
-
+        public void IncreaseBuildingLevel()
+        {
+            buildingLevel += 1;
+            if(buildingLevel > 3) 
+            { 
+                buildingLevel = 3;
+                return;
+            }
+            resourceMax += resourceMax;
+            resourcePerTime += resourcePerTime;
+            if(buildingType == BuildingStyle.House)
+            {
+                ResourceManager.Instance.AddPopulation(resourceMax / 2);
+            }
+            if(buildingType == BuildingStyle.Mill)
+            {
+                ResourceManager.Instance.IncreaseMaxWood = resourceMax / 2;
+            }
+            if(buildingType == BuildingStyle.Mine)
+            {
+                ResourceManager.Instance.IncreaseMaxGold = resourceMax / 2;
+            }
+        }
         public void ResourceGather()
         {
             switch (buildingType)
@@ -50,10 +72,10 @@ namespace CubeCastle
                 case BuildingStyle.House:
                     return;
                 case BuildingStyle.Mill:
-                    Manager.Instance.AddWood(resourcePerTime);
+                    ResourceManager.Instance.AddWood(resourcePerTime);
                     break;
                 case BuildingStyle.Mine:
-                    Manager.Instance.AddGold(resourcePerTime);
+                    ResourceManager.Instance.AddGold(resourcePerTime);
                     break;
             }
         }

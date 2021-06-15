@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7059954525776759756, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -68.54706
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 7059954525776759756, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7059954525776759756, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -49.03238
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7059954525776759756, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -198,6 +198,8 @@ GameObject:
   m_Component:
   - component: {fileID: 211006004}
   - component: {fileID: 211006003}
+  - component: {fileID: 211006005}
+  - component: {fileID: 211006006}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -232,12 +234,42 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211006002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -193.78058, y: -119.00249, z: 212.68604}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211006005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211006002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93653fda3a06ff4283aeaea09b9fbb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalPopulation: 0
+  avaliblePopulation: 0
+  maxWood: 0
+  storedWood: 0
+  maxGold: 0
+  storedGold: 0
+--- !u!114 &211006006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211006002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d889f8d1319749933a183e3b9b9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &319847084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1200,7 @@ GameObject:
   - component: {fileID: 1701052569}
   - component: {fileID: 1701052568}
   - component: {fileID: 1701052567}
+  - component: {fileID: 1701052571}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1188,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 1
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1262,6 +1295,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &1701052571
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701052566}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &1809501586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1467,7 @@ GameObject:
   - component: {fileID: 1851772168}
   - component: {fileID: 1851772170}
   m_Layer: 5
-  m_Name: Pop
+  m_Name: AvaliblePopulation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1467,7 +1512,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Population: 0'
+  m_text: 'Avalible
+
+    Population: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1501,7 +1548,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

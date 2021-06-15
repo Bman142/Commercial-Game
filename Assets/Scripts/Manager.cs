@@ -14,17 +14,6 @@ namespace CubeCastle
         [SerializeField] List<GameObject> mines;
 
 
-        int Population = 5;
-        int Wood;
-        int Gold;
-
-        int woodCap;
-        int goldCap;
-
-        public int GetPopulation { get { return Population; } }
-        public int GetStoredWood { get { return Wood; } }
-        public int GetStoredGold { get { return Gold; } }
-
         static Manager instance;
         public static Manager Instance { get { return instance; } }
 
@@ -32,6 +21,8 @@ namespace CubeCastle
         [SerializeField] TextMeshProUGUI notif;
         public TextMeshProUGUI Notification { get { return notif; } }
 
+        bool buildingMode;
+        public bool BuildingMode { get { return buildingMode; } set { buildingMode = value; } }
 
         float timeBetweenGathers = 1f;
         float timeOfNextGather;
@@ -55,14 +46,28 @@ namespace CubeCastle
         // Start is called before the first frame update
         void Start()
         {
-            
+            StartUpCheck();
         }
-
+        void StartUpCheck()
+        {
+            if(ResourceManager.Instance.GetAvaliblePopulation != 5)
+            {
+                ResourceManager.Instance.AddPopulation(5);
+            }
+            if(houses.Count == 0)
+            {
+                Debug.LogError("Starting House Not Added to Houses List");
+            }
+            if(buildings.Count == 0)
+            {
+                Debug.LogError("Starting House Not Added to Buildings List");
+            }
+        }
         
         public void AddtoHouses(GameObject house)
         {
             houses.Add(house);
-            Population += house.GetComponent<BuildingData>().ResourceMax;
+            ResourceManager.Instance.AddPopulation(house.GetComponent<BuildingData>().ResourceMax);
         }
         public void AddtoBuildings(GameObject building)
         {
@@ -71,12 +76,12 @@ namespace CubeCastle
         public void AddtoMills(GameObject mill)
         {
             mills.Add(mill);
-            woodCap += mill.GetComponent<BuildingData>().ResourceMax;
+            ResourceManager.Instance.IncreaseMaxWood = mill.GetComponent<BuildingData>().ResourceMax;
         }
         public void AddtoMines(GameObject mine)
         {
             mines.Add(mine);
-            goldCap += mine.GetComponent<BuildingData>().ResourceMax;
+            ResourceManager.Instance.IncreaseMaxGold = mine.GetComponent<BuildingData>().ResourceMax;
         }
         public bool CheckBuildingPositions(GameObject building)
         {
@@ -91,29 +96,6 @@ namespace CubeCastle
 
         }
         
-
-        
-        public void TakePopulation(int amount)
-        {
-            Population -= amount;
-        }
-        public void TakeWood(int amount)
-        {
-            Wood -= amount;
-        }
-        public void TakeGold(int amount)
-        {
-            Gold -= amount;
-        }
-
-        public void AddWood(int amount)
-        {
-            Wood += amount;
-        }
-        public void AddGold(int amount)
-        {
-            Gold += amount;
-        }
 
         public IEnumerator TextFade(string text)
         {
@@ -130,14 +112,7 @@ namespace CubeCastle
                 foreach(GameObject building in buildings)
                 {
                     building.GetComponent<BuildingData>().ResourceGather();
-                    if(Wood >= woodCap)
-                    {
-                        Wood = woodCap;
-                    }
-                    if(Gold >= goldCap)
-                    {
-                        Gold = goldCap;
-                    }
+                    
                 }
                 timeOfNextGather += timeBetweenGathers;
             }
