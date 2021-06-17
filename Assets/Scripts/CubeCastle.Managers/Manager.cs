@@ -7,10 +7,8 @@ namespace CubeCastle.Managers
 {
     public class Manager : MonoBehaviour
     {
-        [SerializeField] List<GameObject> buildings;
-        [SerializeField] List<GameObject> houses;
-        [SerializeField] List<GameObject> mills;
-        [SerializeField] List<GameObject> mines;
+        #region Variables
+        [SerializeField] List<GameObject> buildings, houses, mills, mines;
 
 
         static Manager instance;
@@ -27,7 +25,17 @@ namespace CubeCastle.Managers
         float timeOfNextGather;
 
         float timer;
+        #endregion
+        #region Start Functions
         void Awake()
+        {
+            SingletonSetup();
+            //instance = instance != null ? instance != this ? Destroy(this.gameObject) : instance = null :  instance = this;
+
+            
+        }
+
+        void SingletonSetup()
         {
             if (instance != null)
             {
@@ -62,7 +70,8 @@ namespace CubeCastle.Managers
                 Debug.LogError("Starting House Not Added to Buildings List");
             }
         }
-        
+        #endregion
+        #region Add To Lists
         public void AddtoHouses(GameObject house)
         {
             houses.Add(house);
@@ -82,6 +91,7 @@ namespace CubeCastle.Managers
             mines.Add(mine);
             ResourceManager.Instance.IncreaseMaxGold = mine.GetComponent<Buildings.BuildingData>().ResourceMax;
         }
+        #endregion
         public bool CheckBuildingPositions(GameObject building)
         {
             foreach (GameObject test in buildings)

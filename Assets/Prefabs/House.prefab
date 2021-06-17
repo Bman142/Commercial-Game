@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7059954525776759756}
   - component: {fileID: 7059954525776759759}
   - component: {fileID: 7059954525776759758}
-  - component: {fileID: 7059954525776759753}
   - component: {fileID: 7059954525776759752}
   - component: {fileID: 7059954525576593336}
   - component: {fileID: 750647745989684561}
   - component: {fileID: 7418880584184385241}
+  - component: {fileID: 808452127565551730}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7059954525776759755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8007867, y: 29.6, z: 2.0837536}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a277c77a9e1c68948882b7b816455ae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7059954525776759753
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059954525776759755}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7059954525776759752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d1048821bc85f4baa8bcee1acd9397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTwoMesh: {fileID: 0}
   buildingType: 0
   buildingLevel: 1
   resourcePerTime: 0
@@ -157,6 +145,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1418c2e90cb1e3f428632f4ceef65947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   houseUpgradeText: {fileID: 6204005688533439338, guid: d3da65b18922d6e45a17449556247204, type: 3}
   millUpgradeText: {fileID: 0}
   mineUpgradeText: {fileID: 0}
+--- !u!65 &808452127565551730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059954525776759755}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

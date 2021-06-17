@@ -7,7 +7,6 @@ namespace CubeCastle.Buildings
 {
     public class BuildingData : MonoBehaviour
     {
-        [SerializeField] Mesh levelTwoMesh;
         public enum BuildingStyle { House, Mine, Mill}
         [SerializeField] BuildingStyle buildingType;
         public BuildingStyle BuildingType { get { return buildingType; } }
@@ -73,6 +72,15 @@ namespace CubeCastle.Buildings
              *  
              */
         }
+
+        public int GatherCurrentResource()
+        {
+            int tmp = resourceCurrent;
+            resourceCurrent = 0;
+            return tmp;
+            
+        }
+
         public void ResourceGather()
         {
             switch (buildingType)
@@ -80,10 +88,18 @@ namespace CubeCastle.Buildings
                 case BuildingStyle.House:
                     return;
                 case BuildingStyle.Mill:
-                    Managers.ResourceManager.Instance.AddWood(resourcePerTime);
+                    resourceCurrent += resourcePerTime;
+                    if(resourceCurrent > resourceMax)
+                    {
+                        resourceCurrent = resourceMax;
+                    }
                     break;
                 case BuildingStyle.Mine:
-                    Managers.ResourceManager.Instance.AddGold(resourcePerTime);
+                    resourceCurrent += resourcePerTime;
+                    if (resourceCurrent > resourceMax)
+                    {
+                        resourceCurrent = resourceMax;
+                    }
                     break;
             }
         }

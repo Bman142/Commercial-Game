@@ -1,17 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 namespace CubeCastle.Buildings
 {
     public class BuildingUpgrade : MonoBehaviour
     {
         [SerializeField] Canvas canvas;
-        [SerializeField] GameObject houseUpgradeText;
-        [SerializeField] GameObject millUpgradeText;
-        [SerializeField] GameObject mineUpgradeText;
+        [SerializeField] GameObject houseUpgradeText, millUpgradeText, mineUpgradeText;
 
         private void Awake()
         {
@@ -32,7 +28,7 @@ namespace CubeCastle.Buildings
                     newText = Instantiate(mineUpgradeText, canvas.transform);
                     break;
             }
-            newText.GetComponent<Upgrades.UpgradeText>().SetBuilding(this.gameObject);
+            newText.GetComponent<Upgrades.UpgradeText>().OnInstansiate(this.gameObject);
             newText.transform.position = mousePos;
         }
 

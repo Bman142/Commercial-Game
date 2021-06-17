@@ -6,16 +6,11 @@ namespace CubeCastle.Managers
 {
     public class ResourceManager : MonoBehaviour
     {
-
+        #region Variables
         static ResourceManager instance;
         public static ResourceManager Instance { get { return instance; } }
 
-        [SerializeField] int totalPopulation;
-        [SerializeField] int avaliblePopulation;
-        [SerializeField] int maxWood;
-        [SerializeField] int storedWood;
-        [SerializeField] int maxGold;
-        [SerializeField] int storedGold;
+        [SerializeField] int totalPopulation, avaliblePopulation, maxWood, storedWood, maxGold, storedGold;
 
         public int GetTotalPopulation { get { return totalPopulation; } }
         public int GetAvailablePopulation { get { return avaliblePopulation; } }
@@ -24,7 +19,7 @@ namespace CubeCastle.Managers
 
         public int IncreaseMaxWood { set { maxWood += value; } }
         public int IncreaseMaxGold { set { maxGold += value; } }
-
+        #endregion
         void Awake()
         {
             if (instance != null)
@@ -41,6 +36,7 @@ namespace CubeCastle.Managers
             DontDestroyOnLoad(this);
         }
 
+        #region Add Resources
         public void AddPopulation(int amount)
         {
             totalPopulation += amount;
@@ -58,7 +54,8 @@ namespace CubeCastle.Managers
             storedGold += amount;
             if (storedGold >= maxGold) { storedGold = maxGold; }
         }
-
+        #endregion
+        #region Take Resources
         public void TakePopulation(int amount)
         {
             avaliblePopulation -= amount;
@@ -76,7 +73,7 @@ namespace CubeCastle.Managers
             storedGold -= amount;
             if (storedGold < 0) { Debug.LogError("Buffer Underflow in Stored Gold"); }
         }
-
+        #endregion
 
         // Update is called once per frame
         void Update()
