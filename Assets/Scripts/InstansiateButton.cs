@@ -11,7 +11,7 @@ namespace CubeCastle
         {
             GameObject newObject = Instantiate(prefab);
             newObject.name = newObject.name.Replace("(Clone)", "");
-            Manager.Instance.BuildingMode = true;
+            Managers.Manager.Instance.BuildingMode = true;
         }
     }
 }

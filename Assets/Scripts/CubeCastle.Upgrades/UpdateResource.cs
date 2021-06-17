@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace CubeCastle
+namespace CubeCastle.Upgrades
 {
     public class UpdateResource : MonoBehaviour
     {
@@ -20,16 +20,16 @@ namespace CubeCastle
             switch (resource)
             {
                 case Resources.PopulationAvailable:
-                    stat.text = "Avalible Population: " + ResourceManager.Instance.GetAvailablePopulation.ToString();
+                    stat.text = "Avalible Population: " + Managers.ResourceManager.Instance.GetAvailablePopulation.ToString();
                     break;
                 case Resources.PopulationTotal:
-                    stat.text = "Total Population: " + ResourceManager.Instance.GetTotalPopulation.ToString();
+                    stat.text = "Total Population: " + Managers.ResourceManager.Instance.GetTotalPopulation.ToString();
                     break;
                 case Resources.Wood:
-                    stat.text = "Wood: " + ResourceManager.Instance.GetStoredWood.ToString();
+                    stat.text = "Wood: " + Managers.ResourceManager.Instance.GetStoredWood.ToString();
                     break;
                 case Resources.Gold:
-                    stat.text = "Gold: " + ResourceManager.Instance.GetStoredGold.ToString();
+                    stat.text = "Gold: " + Managers.ResourceManager.Instance.GetStoredGold.ToString();
                     break;
             }
         }

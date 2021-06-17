@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CubeCastle
+namespace CubeCastle.Buildings
 {
     public class BuildingControl : MonoBehaviour
     {
@@ -21,45 +21,45 @@ namespace CubeCastle
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (!Manager.Instance.CheckBuildingPositions(this.gameObject))
+                    if (!Managers.Manager.Instance.CheckBuildingPositions(this.gameObject))
                     {
                         switch (buildingType)
                         {
                             
                             case BuildingData.BuildingStyle.House:
-                                if (ResourceManager.Instance.GetStoredGold >= 20)
+                                if (Managers.ResourceManager.Instance.GetStoredGold >= 20)
                                 {
-                                    Manager.Instance.AddtoHouses(this.gameObject);
-                                    ResourceManager.Instance.TakeGold(20);
+                                    Managers.Manager.Instance.AddtoHouses(this.gameObject);
+                                    Managers.ResourceManager.Instance.TakeGold(20);
                                     SetBuilding();
                                 }
                                 else
                                 {
-                                    StartCoroutine(Manager.Instance.TextFade("Insufficent Resources"));
+                                    StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Resources"));
                                 }
                                 break;
                             case BuildingData.BuildingStyle.Mill:
-                                if (ResourceManager.Instance.GetAvailablePopulation >= 5)
+                                if (Managers.ResourceManager.Instance.GetAvailablePopulation >= 5)
                                 {
-                                    Manager.Instance.AddtoMills(this.gameObject);
-                                    ResourceManager.Instance.TakePopulation(5);
+                                    Managers.Manager.Instance.AddtoMills(this.gameObject);
+                                    Managers.ResourceManager.Instance.TakePopulation(5);
                                     SetBuilding();
                                 }
                                 else
                                 {
-                                    StartCoroutine(Manager.Instance.TextFade("Insufficent Population"));
+                                    StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Population"));
                                 }
                                 break;
                             case BuildingData.BuildingStyle.Mine:
-                                if (ResourceManager.Instance.GetStoredWood >= 20)
+                                if (Managers.ResourceManager.Instance.GetStoredWood >= 20)
                                 {
-                                    Manager.Instance.AddtoMines(this.gameObject);
-                                    ResourceManager.Instance.TakeWood(20);
+                                    Managers.Manager.Instance.AddtoMines(this.gameObject);
+                                    Managers.ResourceManager.Instance.TakeWood(20);
                                     SetBuilding();
                                 }
                                 else
                                 {
-                                    StartCoroutine(Manager.Instance.TextFade("Insufficent Resources"));
+                                    StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Resources"));
                                 }
                                 break;
                         }
@@ -67,7 +67,7 @@ namespace CubeCastle
                     }
                     else
                     {
-                        StartCoroutine(Manager.Instance.TextFade(this.gameObject.name + " Overlaps Existing Building"));
+                        StartCoroutine(Managers.Manager.Instance.TextFade(this.gameObject.name + " Overlaps Existing Building"));
 
                     }
                 }
@@ -82,8 +82,8 @@ namespace CubeCastle
                 {
                     building = false;
                     this.GetComponent<GridControl>().Building = false;
-                    Manager.Instance.BuildingMode = false;
-                    Manager.Instance.AddtoBuildings(this.gameObject);
+                    Managers.Manager.Instance.BuildingMode = false;
+                    Managers.Manager.Instance.AddtoBuildings(this.gameObject);
                 }
             }
 

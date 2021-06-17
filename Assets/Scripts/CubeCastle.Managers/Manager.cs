@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace CubeCastle
+namespace CubeCastle.Managers
 {
     public class Manager : MonoBehaviour
     {
@@ -66,7 +66,7 @@ namespace CubeCastle
         public void AddtoHouses(GameObject house)
         {
             houses.Add(house);
-            ResourceManager.Instance.AddPopulation(house.GetComponent<BuildingData>().ResourceMax);
+            ResourceManager.Instance.AddPopulation(house.GetComponent<Buildings.BuildingData>().ResourceMax);
         }
         public void AddtoBuildings(GameObject building)
         {
@@ -75,12 +75,12 @@ namespace CubeCastle
         public void AddtoMills(GameObject mill)
         {
             mills.Add(mill);
-            ResourceManager.Instance.IncreaseMaxWood = mill.GetComponent<BuildingData>().ResourceMax;
+            ResourceManager.Instance.IncreaseMaxWood = mill.GetComponent<Buildings.BuildingData>().ResourceMax;
         }
         public void AddtoMines(GameObject mine)
         {
             mines.Add(mine);
-            ResourceManager.Instance.IncreaseMaxGold = mine.GetComponent<BuildingData>().ResourceMax;
+            ResourceManager.Instance.IncreaseMaxGold = mine.GetComponent<Buildings.BuildingData>().ResourceMax;
         }
         public bool CheckBuildingPositions(GameObject building)
         {
@@ -112,7 +112,7 @@ namespace CubeCastle
             {
                 foreach(GameObject building in buildings)
                 {
-                    building.GetComponent<BuildingData>().ResourceGather();
+                    building.GetComponent<Buildings.BuildingData>().ResourceGather();
                     
                 }
                 timeOfNextGather += timeBetweenGathers;

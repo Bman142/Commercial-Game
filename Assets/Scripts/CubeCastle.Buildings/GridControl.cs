@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CubeCastle
+namespace CubeCastle.Buildings
 {
     public class GridControl : MonoBehaviour
     {

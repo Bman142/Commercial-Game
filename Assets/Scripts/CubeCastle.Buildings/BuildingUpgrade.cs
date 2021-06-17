@@ -4,7 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace CubeCastle {
+namespace CubeCastle.Buildings
+{
     public class BuildingUpgrade : MonoBehaviour
     {
         [SerializeField] Canvas canvas;
@@ -31,7 +32,7 @@ namespace CubeCastle {
                     newText = Instantiate(mineUpgradeText, canvas.transform);
                     break;
             }
-            newText.GetComponent<UpgradeText>().SetBuilding(this.gameObject);
+            newText.GetComponent<Upgrades.UpgradeText>().SetBuilding(this.gameObject);
             newText.transform.position = mousePos;
         }
 

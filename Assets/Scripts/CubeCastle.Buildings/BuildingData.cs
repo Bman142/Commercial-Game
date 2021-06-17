@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace CubeCastle
+namespace CubeCastle.Buildings
 {
     public class BuildingData : MonoBehaviour
     {
@@ -55,15 +55,15 @@ namespace CubeCastle
             resourcePerTime += resourcePerTime;
             if(buildingType == BuildingStyle.House)
             {
-                ResourceManager.Instance.AddPopulation(resourceMax / 2);
+                Managers.ResourceManager.Instance.AddPopulation(resourceMax / 2);
             }
-            if(buildingType == BuildingStyle.Mill)
+            else if(buildingType == BuildingStyle.Mill)
             {
-                ResourceManager.Instance.IncreaseMaxWood = resourceMax / 2;
+                Managers.ResourceManager.Instance.IncreaseMaxWood = resourceMax / 2;
             }
-            if(buildingType == BuildingStyle.Mine)
+            else if(buildingType == BuildingStyle.Mine)
             {
-                ResourceManager.Instance.IncreaseMaxGold = resourceMax / 2;
+                Managers.ResourceManager.Instance.IncreaseMaxGold = resourceMax / 2;
             }
 
             /* Future Plans:
@@ -80,10 +80,10 @@ namespace CubeCastle
                 case BuildingStyle.House:
                     return;
                 case BuildingStyle.Mill:
-                    ResourceManager.Instance.AddWood(resourcePerTime);
+                    Managers.ResourceManager.Instance.AddWood(resourcePerTime);
                     break;
                 case BuildingStyle.Mine:
-                    ResourceManager.Instance.AddGold(resourcePerTime);
+                    Managers.ResourceManager.Instance.AddGold(resourcePerTime);
                     break;
             }
         }

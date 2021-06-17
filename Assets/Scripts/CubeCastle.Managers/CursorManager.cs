@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace CubeCastle
+namespace CubeCastle.Managers
 {
     public class CursorManager : MonoBehaviour
     {
@@ -26,7 +26,7 @@ namespace CubeCastle
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
                     Physics.Raycast(camera.ScreenPointToRay(mousePos), out RaycastHit hit);
-                    hit.collider.GetComponent<BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<BuildingData>().BuildingType);
+                    hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
                 }
                 
             }

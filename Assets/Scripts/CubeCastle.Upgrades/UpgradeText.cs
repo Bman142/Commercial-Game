@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace CubeCastle {
+namespace CubeCastle.Upgrades
+{
     public class UpgradeText : MonoBehaviour
     {
         GameObject Building;
@@ -13,14 +14,14 @@ namespace CubeCastle {
         public void SetBuilding(GameObject building)
         {
             Building = building;
-            currentLevel = Building.GetComponent<BuildingData>().BuildingLevel;
+            currentLevel = Building.GetComponent<Buildings.BuildingData>().BuildingLevel;
             currentLevelText.text = "Level: " + currentLevel.ToString();
             Building.GetComponent<Renderer>().material.color = Color.red;
         }
 
         public void Upgrade()
         {
-            Building.GetComponent<BuildingData>().IncreaseBuildingLevel();
+            Building.GetComponent<Buildings.BuildingData>().IncreaseBuildingLevel();
             CloseUpgradeMenu();
         }
         public void CloseUpgradeMenu()
