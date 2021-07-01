@@ -9,7 +9,7 @@ namespace CubeCastle.Buildings
     {
         public enum BuildingStyle { House, Mine, Mill}
         [SerializeField] BuildingStyle buildingType;
-        public BuildingStyle BuildingType { get { return buildingType; } }
+        public BuildingStyle BuildingType { get { return buildingType; } set { buildingType = value; } }
         [SerializeField] int buildingLevel = 1;
         public int BuildingLevel { get { return buildingLevel; } }
         [SerializeField] int resourcePerTime;
@@ -17,7 +17,7 @@ namespace CubeCastle.Buildings
         [SerializeField] int resourceMax;
         public int ResourceMax { get { return resourceMax; } }
         [SerializeField] int resourceCurrent;
-        public int ResourceCurrent { get { return resourceCurrent; } }
+        public int ResourceCurrent { get { return resourceCurrent; } set { resourceCurrent = value; } }
         private void Start()
         {
             

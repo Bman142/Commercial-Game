@@ -74,6 +74,29 @@ namespace CubeCastle.Managers
             if (storedGold < 0) { Debug.LogError("Buffer Underflow in Stored Gold"); }
         }
         #endregion
+        #region Set Resources (USED IN START UP ONLY)
+        public void SetGold(int gold)
+        {
+            storedGold = gold;
+        }
+
+        public void SetWood(int wood)
+        {
+            storedWood = wood;
+        }
+
+        public void SetAvailPop(int availPop)
+        {
+            avaliblePopulation = availPop;
+        }
+
+        public void SetTotalPop(int totalPop)
+        {
+            totalPopulation = totalPop;
+        }
+
+
+        #endregion
 
         // Update is called once per frame
         void Update()

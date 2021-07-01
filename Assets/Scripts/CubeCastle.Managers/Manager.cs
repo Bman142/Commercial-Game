@@ -104,8 +104,16 @@ namespace CubeCastle.Managers
             return false;
 
         }
-        
 
+        public void ShutDown()
+        {
+            Application.Quit();
+        }
+        
+        public List<GameObject> GetBuildings()
+        {
+            return buildings;
+        }
         public IEnumerator TextFade(string text)
         {
             notification.text = text;

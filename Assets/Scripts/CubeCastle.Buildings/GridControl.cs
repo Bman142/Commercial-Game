@@ -31,7 +31,7 @@ namespace CubeCastle.Buildings
                 RaycastHit hit;
                 Physics.Raycast(camera.ScreenPointToRay(mousePos), out hit);
                 point = hit.point;
-                point.y = 5;
+                point.y = 10;
 
                 centrePoint.position = new Vector3(Mathf.Round(point.x / snapFactor) * snapFactor, point.y, Mathf.Round(point.z / snapFactor) * snapFactor);
             }
