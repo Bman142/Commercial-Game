@@ -8,20 +8,20 @@ namespace CubeCastle.Managers
     public class Manager : MonoBehaviour
     {
         #region Variables
-        [SerializeField] List<GameObject> buildings, houses, mills, mines;
+        [SerializeField] List<GameObject> buildings, houses, mills, mines;  // Lists of buildings for resource calculations
+            
 
-
-        static Manager instance;
+        static Manager instance;                                            // Singleton Reference to the Manager
         public static Manager Instance { get { return instance; } }
 
 
-        [SerializeField] TextMeshProUGUI notification;
+        [SerializeField] TextMeshProUGUI notification;                      // Text box used for notifications
         public TextMeshProUGUI Notification { get { return notification; } }
 
-        bool buildingMode;
+        bool buildingMode = false;                                          // Wether the game should be treated in building mode or not
         public bool BuildingMode { get { return buildingMode; } set { buildingMode = value; } }
 
-        float timeBetweenGathers = 1f;
+        float timeBetweenGathers = 1f;                                      // How Often to collect resources
         float timeOfNextGather;
 
         float timer;
@@ -35,7 +35,7 @@ namespace CubeCastle.Managers
             
         }
 
-        void SingletonSetup()
+        void SingletonSetup() // Set singleton reference
         {
             if (instance != null)
             {
@@ -55,9 +55,9 @@ namespace CubeCastle.Managers
         {
             StartUpCheck();
         }
-        void StartUpCheck()
+        void StartUpCheck() // Ensure starting variables are set correctly
         {
-            if(ResourceManager.Instance.GetAvailablePopulation != 5)
+            if(ResourceManager.Instance.GetAvailablePopulation != 5) //TODO: fix to work with save mechanics
             {
                 ResourceManager.Instance.AddPopulation(5);
             }

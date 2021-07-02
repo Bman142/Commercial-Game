@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CubeCastle.SaveSystem {
     [System.Serializable]
-    public struct BuildingSaveData
+    public struct BuildingSaveData  // Data of buildings in a format that can be saved to binary disk
     {
         public int buildingType;
         public int[] position;
@@ -45,13 +45,15 @@ namespace CubeCastle.SaveSystem {
     }
 
     [System.Serializable]
-    public class GameData
+    public class GameData // Resource data to be saved to disk.
     {
         public int gold;
         public int wood;
         public int totalPop;
         public int availPop;
         public List<BuildingSaveData> buildingSaveData = new List<BuildingSaveData>();
+        public int maxGold;
+        public int maxWood;
 
     
 
@@ -62,11 +64,15 @@ namespace CubeCastle.SaveSystem {
             wood = resourceManager.GetStoredWood;
             totalPop = resourceManager.GetTotalPopulation;
             availPop = resourceManager.GetAvailablePopulation;
-            //buildingSaveData = new List<BuildingSaveData>();
-            foreach(GameObject building in manager.GetBuildings())
+            buildingSaveData = new List<BuildingSaveData>();
+            maxGold = resourceManager.GetMaxGold();
+            maxWood = resourceManager.GetMaxWood();
+
+
+            List<GameObject> buildings = manager.GetBuildings();
+            foreach (GameObject building in buildings)
             {
-                if(manager.GetBuildings().) { continue; }
-                Debug.Log(building.GetComponent<Buildings.BuildingData>());
+                //Debug.Log(building.GetComponent<Buildings.BuildingData>());
                 buildingSaveData.Add(new BuildingSaveData(building.GetComponent<Buildings.BuildingData>().BuildingType,
                     building.transform.position, building.GetComponent<Buildings.BuildingData>().ResourceCurrent));
             }

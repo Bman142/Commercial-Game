@@ -7,7 +7,7 @@ namespace CubeCastle.Managers
     public class ResourceManager : MonoBehaviour
     {
         #region Variables
-        static ResourceManager instance;
+        static ResourceManager instance;                    // Singleton Reference to the Resource Manager
         public static ResourceManager Instance { get { return instance; } }
 
         [SerializeField] int totalPopulation, avaliblePopulation, maxWood, storedWood, maxGold, storedGold;
@@ -94,10 +94,25 @@ namespace CubeCastle.Managers
         {
             totalPopulation = totalPop;
         }
+        public void SetMaxGold(int maxgold)
+        {
+            maxGold = maxgold;
+        }
 
-
+        public void SetMaxWood(int maxwood)
+        {
+            maxWood = maxwood;
+        }
         #endregion
 
+        public int GetMaxGold()
+        {
+            return maxGold;
+        }
+        public int GetMaxWood()
+        {
+            return maxWood;
+        }
         // Update is called once per frame
         void Update()
         {

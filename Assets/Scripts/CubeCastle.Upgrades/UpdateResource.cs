@@ -7,9 +7,9 @@ namespace CubeCastle.Upgrades
 {
     public class UpdateResource : MonoBehaviour
     {
-        TextMeshProUGUI stat;
-        enum Resources { Wood, PopulationAvailable, PopulationTotal, Gold}
-        [SerializeField] Resources resource;
+        TextMeshProUGUI stat;                                                   // Text that displays the resource value
+        enum Resources { Wood, PopulationAvailable, PopulationTotal, Gold}      // Type of Resource to Display
+        [SerializeField] Resources resource;                                    
         private void Start()
         {
             stat = this.GetComponent<TextMeshProUGUI>();
@@ -17,7 +17,7 @@ namespace CubeCastle.Upgrades
 
         private void Update()
         {
-            switch (resource)
+            switch (resource)                                                   // Display data depending on selected resource.
             {
                 case Resources.PopulationAvailable:
                     stat.text = "Avalible Population: " + Managers.ResourceManager.Instance.GetAvailablePopulation.ToString();

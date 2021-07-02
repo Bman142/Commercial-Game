@@ -12,16 +12,16 @@ namespace CubeCastle.Buildings
         public BuildingStyle BuildingType { get { return buildingType; } set { buildingType = value; } }
         [SerializeField] int buildingLevel = 1;
         public int BuildingLevel { get { return buildingLevel; } }
-        [SerializeField] int resourcePerTime;
+        [SerializeField] int resourcePerTime;                               // How many resources the building gathers per second
         public int ResourcePerTime { get { return resourcePerTime; } }
-        [SerializeField] int resourceMax;
+        [SerializeField] int resourceMax;                                   // Maximum amount of resources the building can hold
         public int ResourceMax { get { return resourceMax; } }
-        [SerializeField] int resourceCurrent;
+        [SerializeField] int resourceCurrent;                               // Current amount of resource the building holsd
         public int ResourceCurrent { get { return resourceCurrent; } set { resourceCurrent = value; } }
         private void Start()
         {
             
-            switch (buildingType)
+            switch (buildingType)                                           // Set variables based on what type of building it is
             {
                 case BuildingStyle.House:
                     resourcePerTime = 0;
@@ -83,10 +83,10 @@ namespace CubeCastle.Buildings
 
         public void ResourceGather()
         {
-            switch (buildingType)
+            switch (buildingType)                                           // Return the correct value depending on the building
             {
                 case BuildingStyle.House:
-                    return;
+                    return;                                                 // Houses should not be able to return any new resources
                 case BuildingStyle.Mill:
                     resourceCurrent += resourcePerTime;
                     if(resourceCurrent > resourceMax)

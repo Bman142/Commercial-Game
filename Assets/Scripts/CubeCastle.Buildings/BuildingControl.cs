@@ -8,6 +8,8 @@ namespace CubeCastle.Buildings
     {
         [SerializeField] bool building = true;
         [SerializeField] BuildingData.BuildingStyle buildingType;
+
+        public bool Building { set { building = value; } }
         // Start is called before the first frame update
         void Start()
         {
@@ -17,13 +19,13 @@ namespace CubeCastle.Buildings
         // Update is called once per frame
         void Update()
         {
-            if (building)
+            if (building)                                                                                       // Is the building still being built?
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0))                                                                // Is left mouse button down?
                 {
-                    if (!Managers.Manager.Instance.CheckBuildingPositions(this.gameObject))
+                    if (!Managers.Manager.Instance.CheckBuildingPositions(this.gameObject))                     // Check if the building overlaps another
                     {
-                        switch (buildingType)
+                        switch (buildingType)                                                                   // Subtract the right amount of resources dependant on building
                         {
                             
                             case BuildingData.BuildingStyle.House:
@@ -78,7 +80,7 @@ namespace CubeCastle.Buildings
                         Destroy(this.gameObject);
                     }
                 }
-                void SetBuilding()
+                void SetBuilding()                                                                              // Set Various building variables to the appropriate values
                 {
                     building = false;
                     this.GetComponent<GridControl>().Building = false;

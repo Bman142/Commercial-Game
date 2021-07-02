@@ -6,13 +6,13 @@ namespace CubeCastle.Buildings
 {
     public class GridControl : MonoBehaviour
     {
-        Transform centrePoint;
-        new Camera camera;
-        [SerializeField] float snapFactor;
-        private Vector3 point;
-        [SerializeField] bool building = true;
+        Transform centrePoint;                                  // Centre Point of the Object
+        new Camera camera;                                      // Empty Camera Object
+        [SerializeField] float snapFactor;                      // How many units to snap to(1, 10, 20, ect)
+        private Vector3 point;                                  // Mouse Position in world space
+        [SerializeField] bool building = true;                  // Is the building being built or not?
         public bool Building { set { building = value; } }
-        Vector3 mousePos = Vector3.zero;
+        Vector3 mousePos = Vector3.zero;                        // Mouse Position in Screen Space
         // Start is called before the first frame update
         void Start()
         {

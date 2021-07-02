@@ -6,12 +6,13 @@ namespace CubeCastle.Buildings
 {
     public class BuildingUpgrade : MonoBehaviour
     {
-        [SerializeField] Canvas canvas;
-        [SerializeField] GameObject houseUpgradeText, millUpgradeText, mineUpgradeText;
+        [SerializeField] Canvas canvas;                                                 // Reference to the world canvas
+        [SerializeField] GameObject houseUpgradeText, millUpgradeText, mineUpgradeText; // Text box prefabs for various building types
 
         private void Awake()
         {
-            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();                  // Find World Canvas
+            //TODO: Change to less resource intensive
         }
         public void Popup(Vector3 mousePos, BuildingData.BuildingStyle typeOfBuilding)
         {

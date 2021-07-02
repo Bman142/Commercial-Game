@@ -8,13 +8,13 @@ namespace CubeCastle.Upgrades
     public class UpgradeText : MonoBehaviour
     {
         [SerializeField]
-        Buildings.BuildingData.BuildingStyle buildingStyle;
-        GameObject Building;
-        int currentLevel;
-        [SerializeField] TextMeshProUGUI currentLevelText;
-        [SerializeField] Color highlightColour;
-        Color holding;
-        [SerializeField] TextMeshProUGUI currentResourceText;
+        Buildings.BuildingData.BuildingStyle buildingStyle;             // Type of Building
+        GameObject Building;                                            // Reference to the building that was clicked on
+        int currentLevel;                                               // Building Level
+        [SerializeField] TextMeshProUGUI currentLevelText;              // Text that displays the current level
+        [SerializeField] Color highlightColour;                         // Colour the building will be tinted with on selection
+        Color holding;                                                  // place to hold existing colour of building
+        [SerializeField] TextMeshProUGUI currentResourceText;           // text that displays the current amount of resources in the building
 
         public void OnInstansiate(GameObject building)
         {
@@ -39,7 +39,7 @@ namespace CubeCastle.Upgrades
 
         public void CollectResources()
         {
-            switch (buildingStyle)
+            switch (buildingStyle)                                      // Send Resources to the correct variable in resource manager
             {
                 case Buildings.BuildingData.BuildingStyle.Mill:
                     Managers.ResourceManager.Instance.AddWood(Building.GetComponent<Buildings.BuildingData>().GatherCurrentResource());

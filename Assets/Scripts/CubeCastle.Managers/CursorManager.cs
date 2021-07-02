@@ -7,11 +7,11 @@ namespace CubeCastle.Managers
 {
     public class CursorManager : MonoBehaviour
     {
-        [SerializeField] float ROTSpeed = 10;
-        float MaxToClamp = 10;
-        float ZoomAmount = 0;
-        [SerializeField] float speed = 10f;
-        new Camera camera;
+        [SerializeField] float rotationSpeed = 10;  // Speed of Camera Rotation
+        float MaxToClamp = 10;                      // Max Zoom out
+        float ZoomAmount = 0;                       // Current Zoom Level
+        [SerializeField] float speed = 10f;         // Zoom Speed
+        new Camera camera;                          // Camera Object
         Vector3 mousePos = Vector3.zero;
         // Start is called before the first frame update
         void Start()
@@ -26,7 +26,7 @@ namespace CubeCastle.Managers
             mousePos.y = Input.mousePosition.y;
             if (Input.GetMouseButtonDown(0) && !Manager.Instance.BuildingMode)
             {
-                if (!EventSystem.current.IsPointerOverGameObject())
+                if (!EventSystem.current.IsPointerOverGameObject()) // Is the mouse over an object or the UI
                 {
                     Physics.Raycast(camera.ScreenPointToRay(mousePos), out RaycastHit hit);
                     hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
@@ -35,7 +35,7 @@ namespace CubeCastle.Managers
             }
             if (Input.GetMouseButton(1))
             {
-                if (Input.GetAxis("Mouse X") > 0 || Input.GetAxis("Mouse Y") < 0)
+                if (Input.GetAxis("Mouse X") > 0 || Input.GetAxis("Mouse Y") < 0)   // Move the mouse on Right Mouse button held Down
                 {
                     camera.transform.position += new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
                                                0.0f, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
@@ -54,7 +54,7 @@ namespace CubeCastle.Managers
             ZoomAmount += Input.GetAxis("Mouse ScrollWheel");
             ZoomAmount = Mathf.Clamp(ZoomAmount, -MaxToClamp, MaxToClamp);
             var translate = Mathf.Min(Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")), MaxToClamp - Mathf.Abs(ZoomAmount));
-            camera.transform.Translate(0, 0, translate * ROTSpeed * Mathf.Sign(Input.GetAxis("Mouse ScrollWheel")));
+            camera.transform.Translate(0, 0, translate * rotationSpeed * Mathf.Sign(Input.GetAxis("Mouse ScrollWheel")));
 
         }
     }
