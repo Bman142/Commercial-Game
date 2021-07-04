@@ -44,6 +44,16 @@ namespace CubeCastle.SaveSystem {
         
     }
 
+    public struct WallSaveData
+    {
+        public int[] position;
+
+        WallSaveData(Managers.Manager manager)
+        {
+            position = new int[3];
+
+        }
+    }
     [System.Serializable]
     public class GameData // Resource data to be saved to disk.
     {

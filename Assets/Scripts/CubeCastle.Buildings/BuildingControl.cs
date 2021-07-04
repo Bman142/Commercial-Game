@@ -23,8 +23,9 @@ namespace CubeCastle.Buildings
             {
                 if (Input.GetMouseButtonDown(0))                                                                // Is left mouse button down?
                 {
-                    if (!Managers.Manager.Instance.CheckBuildingPositions(this.gameObject))                     // Check if the building overlaps another
-                    {
+                    if (!Managers.Manager.Instance.CheckBuildingPositions(this.gameObject) &&
+                        !Managers.Manager.Instance.CheckWallPositions(this.gameObject))                     // Check if the building overlaps another
+                    
                         switch (buildingType)                                                                   // Subtract the right amount of resources dependant on building
                         {
                             
@@ -64,6 +65,10 @@ namespace CubeCastle.Buildings
                                     StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Resources"));
                                 }
                                 break;
+                            case BuildingData.BuildingStyle.Wall:
+                                Managers.Manager.Instance.AddToWalls(this.gameObject);
+                                SetBuilding();
+                                break;
                         }
 
                     }
@@ -91,4 +96,3 @@ namespace CubeCastle.Buildings
 
         }
     }
-}

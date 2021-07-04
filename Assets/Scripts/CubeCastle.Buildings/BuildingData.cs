@@ -7,7 +7,7 @@ namespace CubeCastle.Buildings
 {
     public class BuildingData : MonoBehaviour
     {
-        public enum BuildingStyle { House, Mine, Mill}
+        public enum BuildingStyle { House, Mine, Mill, Wall}
         [SerializeField] BuildingStyle buildingType;
         public BuildingStyle BuildingType { get { return buildingType; } set { buildingType = value; } }
         [SerializeField] int buildingLevel = 1;

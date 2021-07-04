@@ -8,7 +8,7 @@ namespace CubeCastle.Managers
     public class Manager : MonoBehaviour
     {
         #region Variables
-        [SerializeField] List<GameObject> buildings, houses, mills, mines;  // Lists of buildings for resource calculations
+        [SerializeField] List<GameObject> buildings, houses, mills, mines, walls;  // Lists of buildings for resource calculations
             
 
         static Manager instance;                                            // Singleton Reference to the Manager
@@ -91,6 +91,10 @@ namespace CubeCastle.Managers
             mines.Add(mine);
             ResourceManager.Instance.IncreaseMaxGold = mine.GetComponent<Buildings.BuildingData>().ResourceMax;
         }
+        public void AddToWalls(GameObject wall)
+        {
+            walls.Add(wall);
+        }
         #endregion
         public bool CheckBuildingPositions(GameObject building)
         {
@@ -103,6 +107,22 @@ namespace CubeCastle.Managers
             }
             return false;
 
+        }
+
+        public bool CheckWallPositions(GameObject wall)
+        {
+            foreach(GameObject test in walls)
+            {
+                if(wall.transform.position == test.transform.position)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public List<GameObject> GetWalls()
+        {
+            return walls;
         }
 
         public void ShutDown()
