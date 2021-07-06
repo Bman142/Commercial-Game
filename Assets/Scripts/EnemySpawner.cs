@@ -17,6 +17,7 @@ namespace CubeCastle
         void OnAttack()
         {
             timeBetweenAttacks = Random.Range(300, 600);
+            Debug.Log((timeBetweenAttacks / 60).ToString() + " Minutes to attack");
             timeOfNextAttack += timeBetweenAttacks;
         }
 

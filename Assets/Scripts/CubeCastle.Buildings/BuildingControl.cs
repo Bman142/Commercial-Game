@@ -87,7 +87,6 @@ namespace CubeCastle.Buildings
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
-                    Debug.Log("Right Mouse Down");
                     if (building)
                     {
                         Destroy(this.gameObject);

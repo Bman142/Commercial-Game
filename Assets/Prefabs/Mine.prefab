@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b97deaafadc87442a2de0d5003310a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapFactor: 10
+  snapFactor: 20
   building: 1
   yOffset: 10
 --- !u!114 &7665985100504034447

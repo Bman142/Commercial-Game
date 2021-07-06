@@ -13,7 +13,7 @@ namespace CubeCastle.SaveSystem {
 
         public BuildingSaveData(Buildings.BuildingData.BuildingStyle buildingStyle, Vector3 positionInput, int resourceAmountInput)
         {
-            position = new int[3];
+            
             switch (buildingStyle)
             {
                 case Buildings.BuildingData.BuildingStyle.House:
@@ -32,7 +32,7 @@ namespace CubeCastle.SaveSystem {
                     buildingType = -1;
                     break;
             }
-
+            position = new int[3];
             position[0] = (int)positionInput.x;
             position[1] = (int)positionInput.y;
             position[2] = (int)positionInput.z;
@@ -43,14 +43,17 @@ namespace CubeCastle.SaveSystem {
         }
         
     }
-
+    [System.Serializable]
     public struct WallSaveData
     {
         public int[] position;
 
-        WallSaveData(Managers.Manager manager)
+        public WallSaveData(Vector3 positionInput)
         {
             position = new int[3];
+            position[0] = (int)positionInput.x;
+            position[1] = (int)positionInput.y;
+            position[2] = (int)positionInput.z;
 
         }
     }
@@ -61,11 +64,10 @@ namespace CubeCastle.SaveSystem {
         public int wood;
         public int totalPop;
         public int availPop;
-        public List<BuildingSaveData> buildingSaveData = new List<BuildingSaveData>();
         public int maxGold;
         public int maxWood;
-
-    
+        public List<WallSaveData> wallSaveData = new List<WallSaveData>();
+        public List<BuildingSaveData> buildingSaveData = new List<BuildingSaveData>();
 
 
         public GameData(Managers.ResourceManager resourceManager, Managers.Manager manager)
@@ -74,7 +76,6 @@ namespace CubeCastle.SaveSystem {
             wood = resourceManager.GetStoredWood;
             totalPop = resourceManager.GetTotalPopulation;
             availPop = resourceManager.GetAvailablePopulation;
-            buildingSaveData = new List<BuildingSaveData>();
             maxGold = resourceManager.GetMaxGold();
             maxWood = resourceManager.GetMaxWood();
 
@@ -85,6 +86,12 @@ namespace CubeCastle.SaveSystem {
                 //Debug.Log(building.GetComponent<Buildings.BuildingData>());
                 buildingSaveData.Add(new BuildingSaveData(building.GetComponent<Buildings.BuildingData>().BuildingType,
                     building.transform.position, building.GetComponent<Buildings.BuildingData>().ResourceCurrent));
+            }
+
+            List<GameObject> walls = manager.GetWalls();
+            foreach (GameObject wall in walls)
+            {
+                wallSaveData.Add(new WallSaveData(wall.transform.position));
             }
            
             
