@@ -26,14 +26,33 @@ namespace CubeCastle.Managers
             mousePos.y = Input.mousePosition.y;
             if (Input.GetMouseButtonDown(0) && !Manager.Instance.BuildingMode)
             {
-                if (!EventSystem.current.IsPointerOverGameObject()) // Is the mouse over an object or the UI
+                /*try
+                {
+                    Upgrades.UpgradeText upgradeText = FindObjectOfType<Upgrades.UpgradeText>();
+                    Debug.Log(upgradeText);
+                }
+                catch
+                {
+                    Debug.Log("Catch");
+                    Physics.Raycast(camera.ScreenPointToRay(mousePos), out RaycastHit hit);
+                    
+                    hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
+                }*/
+                Upgrades.UpgradeText upgradeText = FindObjectOfType<Upgrades.UpgradeText>();
+                if(upgradeText == null)
                 {
                     Physics.Raycast(camera.ScreenPointToRay(mousePos), out RaycastHit hit);
-                    hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
+                    if (hit.collider.GetComponent<Buildings.BuildingUpgrade>() != null)
+                    {
+                        hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
+                    }
                 }
-                
+
+
+
+
             }
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(2))
             {
                 if (Input.GetAxis("Mouse X") > 0 || Input.GetAxis("Mouse Y") < 0)   // Move the mouse on Right Mouse button held Down
                 {

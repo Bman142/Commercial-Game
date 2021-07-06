@@ -32,7 +32,7 @@ namespace CubeCastle.SaveSystem
             }
             else
             {
-                Debug.LogError("Save File Not Found in: " + path);
+                Debug.Log("Save File Not Found in: " + path);
                 return null;
             }
         }

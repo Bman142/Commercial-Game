@@ -23,54 +23,61 @@ namespace CubeCastle.Buildings
             {
                 if (Input.GetMouseButtonDown(0))                                                                // Is left mouse button down?
                 {
-                    if (!Managers.Manager.Instance.CheckBuildingPositions(this.gameObject) &&
-                        !Managers.Manager.Instance.CheckWallPositions(this.gameObject))                     // Check if the building overlaps another
-                    
-                        switch (buildingType)                                                                   // Subtract the right amount of resources dependant on building
-                        {
-                            
-                            case BuildingData.BuildingStyle.House:
-                                if (Managers.ResourceManager.Instance.GetStoredGold >= 20)
-                                {
-                                    Managers.Manager.Instance.AddtoHouses(this.gameObject);
-                                    Managers.ResourceManager.Instance.TakeGold(20);
-                                    SetBuilding();
-                                }
-                                else
-                                {
-                                    StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Resources"));
-                                }
-                                break;
-                            case BuildingData.BuildingStyle.Mill:
-                                if (Managers.ResourceManager.Instance.GetAvailablePopulation >= 5)
-                                {
-                                    Managers.Manager.Instance.AddtoMills(this.gameObject);
-                                    Managers.ResourceManager.Instance.TakePopulation(5);
-                                    SetBuilding();
-                                }
-                                else
-                                {
-                                    StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Population"));
-                                }
-                                break;
-                            case BuildingData.BuildingStyle.Mine:
-                                if (Managers.ResourceManager.Instance.GetStoredWood >= 20)
-                                {
-                                    Managers.Manager.Instance.AddtoMines(this.gameObject);
-                                    Managers.ResourceManager.Instance.TakeWood(20);
-                                    SetBuilding();
-                                }
-                                else
-                                {
-                                    StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Resources"));
-                                }
-                                break;
-                            case BuildingData.BuildingStyle.Wall:
-                                Managers.Manager.Instance.AddToWalls(this.gameObject);
-                                SetBuilding();
-                                break;
-                        }
+                    if (!Managers.Manager.Instance.CheckBuildingPositions(this.gameObject))
+                    {                     // Check if the building overlaps another
 
+                        if (!Managers.Manager.Instance.CheckWallPositions(this.gameObject))
+                        {
+                            switch (buildingType)                                                                   // Subtract the right amount of resources dependant on building
+                            {
+
+                                case BuildingData.BuildingStyle.House:
+                                    if (Managers.ResourceManager.Instance.GetStoredGold >= 20)
+                                    {
+                                        Managers.Manager.Instance.AddtoHouses(this.gameObject);
+                                        Managers.ResourceManager.Instance.TakeGold(20);
+                                        SetBuilding();
+                                    }
+                                    else
+                                    {
+                                        StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Resources"));
+                                    }
+                                    break;
+                                case BuildingData.BuildingStyle.Mill:
+                                    if (Managers.ResourceManager.Instance.GetAvailablePopulation >= 5)
+                                    {
+                                        Managers.Manager.Instance.AddtoMills(this.gameObject);
+                                        Managers.ResourceManager.Instance.TakePopulation(5);
+                                        SetBuilding();
+                                    }
+                                    else
+                                    {
+                                        StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Population"));
+                                    }
+                                    break;
+                                case BuildingData.BuildingStyle.Mine:
+                                    if (Managers.ResourceManager.Instance.GetStoredWood >= 20)
+                                    {
+                                        Managers.Manager.Instance.AddtoMines(this.gameObject);
+                                        Managers.ResourceManager.Instance.TakeWood(20);
+                                        SetBuilding();
+                                    }
+                                    else
+                                    {
+                                        StartCoroutine(Managers.Manager.Instance.TextFade("Insufficent Resources"));
+                                    }
+                                    break;
+                                case BuildingData.BuildingStyle.Wall:
+                                    Managers.Manager.Instance.AddToWalls(this.gameObject);
+                                    SetBuilding();
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            StartCoroutine(Managers.Manager.Instance.TextFade(this.gameObject.name + " Overlaps Existing Building"));
+
+                        }
                     }
                     else
                     {
@@ -80,6 +87,7 @@ namespace CubeCastle.Buildings
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
+                    Debug.Log("Right Mouse Down");
                     if (building)
                     {
                         Destroy(this.gameObject);
@@ -96,3 +104,4 @@ namespace CubeCastle.Buildings
 
         }
     }
+}

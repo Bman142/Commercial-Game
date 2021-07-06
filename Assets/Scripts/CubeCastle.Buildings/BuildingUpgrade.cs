@@ -11,8 +11,8 @@ namespace CubeCastle.Buildings
 
         private void Awake()
         {
-            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();                  // Find World Canvas
-            //TODO: Change to less resource intensive
+            canvas = Managers.Manager.Instance.Canvas;                  // Find World Canvas
+            
         }
         public void Popup(Vector3 mousePos, BuildingData.BuildingStyle typeOfBuilding)
         {

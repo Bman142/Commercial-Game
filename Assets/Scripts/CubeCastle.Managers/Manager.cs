@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System.IO;
 
 namespace CubeCastle.Managers
 {
@@ -18,8 +20,11 @@ namespace CubeCastle.Managers
         [SerializeField] TextMeshProUGUI notification;                      // Text box used for notifications
         public TextMeshProUGUI Notification { get { return notification; } }
 
-        bool buildingMode = false;                                          // Wether the game should be treated in building mode or not
+        [SerializeField] bool buildingMode = false;                                          // Wether the game should be treated in building mode or not
         public bool BuildingMode { get { return buildingMode; } set { buildingMode = value; } }
+
+        [SerializeField] Canvas canvas;
+        public Canvas Canvas { get { return canvas; } }
 
         float timeBetweenGathers = 1f;                                      // How Often to collect resources
         float timeOfNextGather;
@@ -57,9 +62,12 @@ namespace CubeCastle.Managers
         }
         void StartUpCheck() // Ensure starting variables are set correctly
         {
-            if(ResourceManager.Instance.GetAvailablePopulation != 5) //TODO: fix to work with save mechanics
-            {
-                ResourceManager.Instance.AddPopulation(5);
+            if (!File.Exists(Application.persistentDataPath + "/gameData.bin"))
+                {
+                if (ResourceManager.Instance.GetAvailablePopulation != 5) //TODO: fix to work with save mechanics
+                {
+                    ResourceManager.Instance.AddPopulation(5);
+                } 
             }
             if(houses.Count == 0)
             {

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapFactor: 10
   building: 1
+  yOffset: 10
 --- !u!114 &7059954525576593336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d1048821bc85f4baa8bcee1acd9397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTwoMesh: {fileID: 0}
   buildingType: 0
   buildingLevel: 1
   resourcePerTime: 0
