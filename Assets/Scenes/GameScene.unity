@@ -267,6 +267,18 @@ PrefabInstance:
       propertyPath: building
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 808452127565551730, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
+      propertyPath: m_Size.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 808452127565551730, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
+      propertyPath: m_Size.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 808452127565551730, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
+      propertyPath: m_Size.z
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7059954525776759752, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
       propertyPath: building
       value: 0
@@ -339,6 +351,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -2432090755550338912, guid: d21fdc3262e01b246b2f6b5e4d8cb29e, type: 3}
+    - target: {fileID: 7418880584184385241, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1701052569}
+    - target: {fileID: 7418880584184385241, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
+      propertyPath: upgradeTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
 --- !u!1 &211006002
@@ -382,6 +402,7 @@ MonoBehaviour:
   mills: []
   mines: []
   walls: []
+  deleteSaveData: 1
   notification: {fileID: 2053428413}
   buildingMode: 0
   canvas: {fileID: 1701052569}
@@ -1872,13 +1893,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2767277, y: 0, z: 0, w: 0.9609484}
+  m_LocalRotation: {x: 0.25566307, y: -0.36773902, z: 0.1058991, w: 0.8878006}
   m_LocalPosition: {x: 0, y: 59.8, z: -97.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 32.13, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 32.13, y: -45, z: 0}
 --- !u!1 &1021485913
 GameObject:
   m_ObjectHideFlags: 0

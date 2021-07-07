@@ -119,6 +119,7 @@ MonoBehaviour:
   resourcePerTime: 0
   resourceMax: 0
   resourceCurrent: 0
+  Popup: {fileID: 9214921789894158013, guid: 0b6e44dc9b2577c46b3a5797127082ab, type: 3}
 --- !u!114 &-7212407075291224720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +150,8 @@ MonoBehaviour:
   houseUpgradeText: {fileID: 0}
   millUpgradeText: {fileID: 3956201462261324663, guid: 78cef629382b178418a623f2f3d58a0e, type: 3}
   mineUpgradeText: {fileID: 0}
+  progressBar: {fileID: 4573882312317580609, guid: fc5f6f2c9789ecf43bacfa13a18bdd2e, type: 3}
+  upgradeTime: 1
 --- !u!65 &5674020128158459756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,5 +163,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000004, y: 1.0000002, z: 1.0000001}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

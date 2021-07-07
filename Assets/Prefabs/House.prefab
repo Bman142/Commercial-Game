@@ -149,6 +149,8 @@ MonoBehaviour:
   houseUpgradeText: {fileID: 6204005688533439338, guid: d3da65b18922d6e45a17449556247204, type: 3}
   millUpgradeText: {fileID: 0}
   mineUpgradeText: {fileID: 0}
+  progressBar: {fileID: 4573882312317580609, guid: fc5f6f2c9789ecf43bacfa13a18bdd2e, type: 3}
+  upgradeTime: 1
 --- !u!65 &808452127565551730
 BoxCollider:
   m_ObjectHideFlags: 0

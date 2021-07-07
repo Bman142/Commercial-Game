@@ -18,6 +18,9 @@ namespace CubeCastle.Buildings
         public int ResourceMax { get { return resourceMax; } }
         [SerializeField] int resourceCurrent;                               // Current amount of resource the building holsd
         public int ResourceCurrent { get { return resourceCurrent; } set { resourceCurrent = value; } }
+
+        [SerializeField] GameObject Popup;
+        GameObject popup = null;
         private void Start()
         {
             
@@ -77,12 +80,17 @@ namespace CubeCastle.Buildings
         {
             int tmp = resourceCurrent;
             resourceCurrent = 0;
+            if(popup != null)
+            {
+                Destroy(popup);
+            }
             return tmp;
             
         }
 
         public void ResourceGather()
         {
+            
             switch (buildingType)                                           // Return the correct value depending on the building
             {
                 case BuildingStyle.House:
@@ -92,6 +100,12 @@ namespace CubeCastle.Buildings
                     if(resourceCurrent > resourceMax)
                     {
                         resourceCurrent = resourceMax;
+                        if (popup == null)
+                        {
+                            popup = Instantiate(Popup);
+                            popup.transform.position = this.transform.position + new Vector3(0, 20, 0);
+                            popup.transform.rotation = Camera.main.transform.rotation;
+                        }
                     }
                     break;
                 case BuildingStyle.Mine:
@@ -99,6 +113,12 @@ namespace CubeCastle.Buildings
                     if (resourceCurrent > resourceMax)
                     {
                         resourceCurrent = resourceMax;
+                        if (popup == null)
+                        {
+                            popup = Instantiate(Popup);
+                            popup.transform.position = this.transform.position + new Vector3(0, 12, 0);
+                            popup.transform.rotation = Camera.main.transform.rotation;
+                        }
                     }
                     break;
             }

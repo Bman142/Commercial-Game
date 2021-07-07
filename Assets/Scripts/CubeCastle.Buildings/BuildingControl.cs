@@ -90,6 +90,9 @@ namespace CubeCastle.Buildings
                     if (building)
                     {
                         Destroy(this.gameObject);
+                        building = false;
+                        this.GetComponent<GridControl>().Building = false;
+                        Managers.Manager.Instance.BuildingMode = false;
                     }
                 }
                 void SetBuilding()                                                                              // Set Various building variables to the appropriate values

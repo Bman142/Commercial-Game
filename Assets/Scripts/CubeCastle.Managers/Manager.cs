@@ -11,7 +11,7 @@ namespace CubeCastle.Managers
     {
         #region Variables
         [SerializeField] List<GameObject> buildings, houses, mills, mines, walls;  // Lists of buildings for resource calculations
-            
+        [SerializeField] bool deleteSaveData;
 
         static Manager instance;                                            // Singleton Reference to the Manager
         public static Manager Instance { get { return instance; } }
@@ -36,10 +36,13 @@ namespace CubeCastle.Managers
         {
             SingletonSetup();
             //instance = instance != null ? instance != this ? Destroy(this.gameObject) : instance = null :  instance = this;
-
+            DeleteSave();
             
         }
-
+        void DeleteSave()
+        {
+            if (deleteSaveData) { File.Delete(Application.persistentDataPath + "/gameData.bin"); deleteSaveData = false; }
+        }
         void SingletonSetup() // Set singleton reference
         {
             if (instance != null)
@@ -62,6 +65,7 @@ namespace CubeCastle.Managers
         }
         void StartUpCheck() // Ensure starting variables are set correctly
         {
+            
             if (!File.Exists(Application.persistentDataPath + "/gameData.bin"))
                 {
                 if (ResourceManager.Instance.GetAvailablePopulation != 5) //TODO: fix to work with save mechanics
@@ -108,7 +112,7 @@ namespace CubeCastle.Managers
         {
             foreach (GameObject test in buildings)
             {
-                if (building.transform.position == test.transform.position)
+                if (test.GetComponent<BoxCollider>().bounds.Contains(building.transform.position))
                 {
                     return true;
                 }
@@ -121,7 +125,7 @@ namespace CubeCastle.Managers
         {
             foreach(GameObject test in walls)
             {
-                if(wall.transform.position == test.transform.position)
+                if(test.GetComponent<BoxCollider>().bounds.Contains(wall.transform.position))
                 {
                     return true;
                 }

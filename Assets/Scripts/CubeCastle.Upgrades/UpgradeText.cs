@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 namespace CubeCastle.Upgrades
 {
@@ -15,7 +16,6 @@ namespace CubeCastle.Upgrades
         [SerializeField] Color highlightColour;                         // Colour the building will be tinted with on selection
         Color holding;                                                  // place to hold existing colour of building
         [SerializeField] TextMeshProUGUI currentResourceText;           // text that displays the current amount of resources in the building
-
         public void OnInstansiate(GameObject building)
         {
             Building = building;
@@ -24,12 +24,16 @@ namespace CubeCastle.Upgrades
             holding = Building.GetComponent<Renderer>().material.color;
             Building.GetComponent<Renderer>().material.color = highlightColour;
             currentResourceText.text = currentResourceText.text +  Building.GetComponent<Buildings.BuildingData>().ResourceCurrent.ToString();
+            
         }
 
         public void Upgrade()
         {
-            Building.GetComponent<Buildings.BuildingData>().IncreaseBuildingLevel();
-            CloseUpgradeMenu();
+            if (!Building.GetComponent<Buildings.BuildingUpgrade>().UpgradeStatus)
+            {
+                Building.GetComponent<Buildings.BuildingUpgrade>().Upgrade(Building);
+                CloseUpgradeMenu();
+            }
         }
         public void CloseUpgradeMenu()
         {

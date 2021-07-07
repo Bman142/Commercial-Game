@@ -38,16 +38,18 @@ namespace CubeCastle.Managers
                     
                     hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
                 }*/
-                Upgrades.UpgradeText upgradeText = FindObjectOfType<Upgrades.UpgradeText>();
-                if(upgradeText == null)
+                if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    Physics.Raycast(camera.ScreenPointToRay(mousePos), out RaycastHit hit);
-                    if (hit.collider.GetComponent<Buildings.BuildingUpgrade>() != null)
+                    Upgrades.UpgradeText upgradeText = FindObjectOfType<Upgrades.UpgradeText>();
+                    if (upgradeText == null)
                     {
-                        hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
+                        Physics.Raycast(camera.ScreenPointToRay(mousePos), out RaycastHit hit);
+                        if (hit.collider.GetComponent<Buildings.BuildingUpgrade>() != null)
+                        {
+                            hit.collider.GetComponent<Buildings.BuildingUpgrade>().Popup(mousePos, hit.collider.GetComponent<Buildings.BuildingData>().BuildingType);
+                        }
                     }
                 }
-
 
 
 
