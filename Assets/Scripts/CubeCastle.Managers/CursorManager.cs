@@ -60,13 +60,19 @@ namespace CubeCastle.Managers
                 {
                     camera.transform.position += new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
                                                0.0f, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
+                    //Debug.Log(new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
+                                               //0.0f, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed));
                 }
 
                 else if (Input.GetAxis("Mouse X") < 0)
                 {
                     camera.transform.position += new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
                                                0.0f, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
+                    Debug.Log(new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
+                                               0.0f, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed).magnitude);
+                    Debug.Log(60/Time.deltaTime);
                 }
+
             }
 
             //Camera Zoom Use FOV

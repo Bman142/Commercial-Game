@@ -403,7 +403,7 @@ MonoBehaviour:
   mines: []
   walls: []
   upgrades: []
-  deleteSaveData: 1
+  deleteSaveData: 0
   notification: {fileID: 2053428413}
   buildingMode: 0
   canvas: {fileID: 1701052569}
