@@ -11,6 +11,7 @@ namespace CubeCastle.Buildings
         [SerializeField] Canvas canvas;                                                 // Reference to the world canvas
         [SerializeField] GameObject houseUpgradeText, millUpgradeText, mineUpgradeText, progressBar; // Text box prefabs for various building types
 
+        GameObject Building;
         DateTime upgradeStart = DateTime.MaxValue;
         DateTime upgradeFinish = DateTime.MaxValue;
         [SerializeField] int upgradeTime;
@@ -46,23 +47,33 @@ namespace CubeCastle.Buildings
             newText.transform.position = mousePos;
         }
 
-        public void Upgrade(GameObject building)
+        public void Upgrade(GameObject building, bool setBuildTime)
         {
             isUpgrading = true;
+            Building = building;
+            Managers.Manager.Instance.AddToUpgrades(building);
             slider = Instantiate(progressBar);
             slider.transform.position = building.transform.position + new Vector3(0, 15, 0);
             slider.transform.rotation = Camera.main.transform.rotation;
-            upgradeStart = DateTime.UtcNow;
-            upgradeFinish = upgradeStart.AddMinutes(upgradeTime);
+            if (setBuildTime)
+            {
+                upgradeStart = DateTime.UtcNow;
+                upgradeFinish = upgradeStart.AddMinutes(upgradeTime);
+            }
             Debug.Log(upgradeFinish);
             timeRemaining = slider.GetComponentInChildren<TextMeshProUGUI>();
+            InvokeRepeating("UpgradeTimer", 0, 0.1f);
 
         }
 
         private void Update()
         {
             
-            if(upgradeFinish <= DateTime.UtcNow)
+        }
+
+        void UpgradeTimer()
+        {
+            if (upgradeFinish <= DateTime.UtcNow)
             {
                 this.GetComponent<BuildingData>().IncreaseBuildingLevel();
                 upgradeFinish = DateTime.MaxValue;
@@ -70,6 +81,8 @@ namespace CubeCastle.Buildings
                 Destroy(slider);
                 slider = null;
                 isUpgrading = false;
+                CancelInvoke("UpgradeTimer");
+                Managers.Manager.Instance.RemoveFromUpgrades(Building);
 
             }
             TimeSpan tsTOFinish = upgradeFinish.Subtract(DateTime.UtcNow);
@@ -84,9 +97,14 @@ namespace CubeCastle.Buildings
             }
         }
 
-        public TimeSpan GetTimeRemaining()
+
+        public void SetUpgradeFinish(DateTime date)
         {
-            return upgradeFinish.Subtract(DateTime.UtcNow);
+            upgradeFinish = date;
+        }
+        public DateTime GetUpgradeFinish()
+        {
+            return upgradeFinish;
         }
     }
 }

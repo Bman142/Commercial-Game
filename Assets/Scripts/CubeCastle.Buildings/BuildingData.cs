@@ -78,6 +78,7 @@ namespace CubeCastle.Buildings
 
         public int GatherCurrentResource()
         {
+            
             int tmp = resourceCurrent;
             resourceCurrent = 0;
             if(popup != null)
@@ -90,7 +91,8 @@ namespace CubeCastle.Buildings
 
         public void ResourceGather()
         {
-            
+            if (this.GetComponent<BuildingUpgrade>().UpgradeStatus) { return; }
+
             switch (buildingType)                                           // Return the correct value depending on the building
             {
                 case BuildingStyle.House:

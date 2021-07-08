@@ -9,9 +9,11 @@ namespace CubeCastle.SaveSystem {
         public int buildingType;
         public int[] position;
         public int resourceAmount;
-        
+        public int[] TimeData;
 
-        public BuildingSaveData(Buildings.BuildingData.BuildingStyle buildingStyle, Vector3 positionInput, int resourceAmountInput)
+
+
+        public BuildingSaveData(Buildings.BuildingData.BuildingStyle buildingStyle, Vector3 positionInput, int resourceAmountInput, bool upgrading, System.DateTime upgradeFinish)
         {
             
             switch (buildingStyle)
@@ -39,6 +41,24 @@ namespace CubeCastle.SaveSystem {
 
             resourceAmount = resourceAmountInput;
 
+            if (upgrading)
+            {
+                System.DateTime dateTime = upgradeFinish;
+                TimeData = new int[6];
+                TimeData[0] = dateTime.Year;
+                TimeData[1] = dateTime.Month;
+                TimeData[2] = dateTime.Day;
+                TimeData[3] = dateTime.Hour;
+                TimeData[4] = dateTime.Minute;
+                TimeData[5] = dateTime.Second;
+            }
+            else
+            {
+                TimeData = null;
+            }
+
+            
+
             
         }
         
@@ -55,6 +75,22 @@ namespace CubeCastle.SaveSystem {
             position[1] = (int)positionInput.y;
             position[2] = (int)positionInput.z;
 
+        }
+    }
+    [System.Serializable]
+    public struct TimeAndDate
+    {
+        public int[] TimeData;
+
+        public TimeAndDate(System.DateTime dateTime)
+        {
+            TimeData = new int[6];
+            TimeData[0] = dateTime.Year;
+            TimeData[1] = dateTime.Month;
+            TimeData[2] = dateTime.Day;
+            TimeData[3] = dateTime.Hour;
+            TimeData[4] = dateTime.Minute;
+            TimeData[5] = dateTime.Second;
         }
     }
     [System.Serializable]
@@ -85,7 +121,8 @@ namespace CubeCastle.SaveSystem {
             {
                 //Debug.Log(building.GetComponent<Buildings.BuildingData>());
                 buildingSaveData.Add(new BuildingSaveData(building.GetComponent<Buildings.BuildingData>().BuildingType,
-                    building.transform.position, building.GetComponent<Buildings.BuildingData>().ResourceCurrent));
+                    building.transform.position, building.GetComponent<Buildings.BuildingData>().ResourceCurrent, manager.isUpgrading(building), 
+                    building.GetComponent<Buildings.BuildingUpgrade>().GetUpgradeFinish()));
             }
 
             List<GameObject> walls = manager.GetWalls();
@@ -93,6 +130,8 @@ namespace CubeCastle.SaveSystem {
             {
                 wallSaveData.Add(new WallSaveData(wall.transform.position));
             }
+
+            
            
             
             

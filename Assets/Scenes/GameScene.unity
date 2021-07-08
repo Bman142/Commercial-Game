@@ -402,6 +402,7 @@ MonoBehaviour:
   mills: []
   mines: []
   walls: []
+  upgrades: []
   deleteSaveData: 1
   notification: {fileID: 2053428413}
   buildingMode: 0

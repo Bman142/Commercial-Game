@@ -61,6 +61,13 @@ namespace CubeCastle.Managers
 
                     }
                     Manager.Instance.AddtoBuildings(newObject);
+                    if(building.TimeData != null)
+                    {
+                        System.DateTime dateTime = new System.DateTime(building.TimeData[0], building.TimeData[1], building.TimeData[2], building.TimeData[3], building.TimeData[4], building.TimeData[5]);
+                        newObject.GetComponent<Buildings.BuildingUpgrade>().SetUpgradeFinish(dateTime);
+                        Manager.Instance.AddToUpgrades(newObject);
+                        newObject.GetComponent<Buildings.BuildingUpgrade>().Upgrade(newObject, false);
+                    }
                 }
                 foreach (SaveSystem.WallSaveData wallSaveData in data.wallSaveData)
                 {
@@ -72,6 +79,8 @@ namespace CubeCastle.Managers
                     newWall.GetComponent<Buildings.BuildingControl>().Building = false;
                     Manager.Instance.AddToWalls(newWall);
                 } 
+
+                
             }
         }
 

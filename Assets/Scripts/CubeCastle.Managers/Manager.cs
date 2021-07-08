@@ -10,8 +10,9 @@ namespace CubeCastle.Managers
     public class Manager : MonoBehaviour
     {
         #region Variables
-        [SerializeField] List<GameObject> buildings, houses, mills, mines, walls;  // Lists of buildings for resource calculations
+        [SerializeField] List<GameObject> buildings, houses, mills, mines, walls, upgrades;  // Lists of buildings for resource calculations
         [SerializeField] bool deleteSaveData;
+        
 
         static Manager instance;                                            // Singleton Reference to the Manager
         public static Manager Instance { get { return instance; } }
@@ -107,6 +108,16 @@ namespace CubeCastle.Managers
         {
             walls.Add(wall);
         }
+
+        public void AddToUpgrades(GameObject objects)
+        {
+            upgrades.Add(objects);
+        }
+
+        public void RemoveFromUpgrades(GameObject objects)
+        {
+            upgrades.Remove(objects);
+        }
         #endregion
         public bool CheckBuildingPositions(GameObject building)
         {
@@ -145,6 +156,20 @@ namespace CubeCastle.Managers
         public List<GameObject> GetBuildings()
         {
             return buildings;
+        }
+
+        public List<GameObject> GetUpgrades()
+        {
+            return upgrades;
+        }
+
+        public bool isUpgrading(GameObject test)
+        {
+            if(upgrades.Contains(test))
+            {
+                return true;
+            }
+            else { return false; }
         }
         public IEnumerator TextFade(string text)
         {

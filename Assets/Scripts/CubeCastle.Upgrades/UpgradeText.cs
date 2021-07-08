@@ -31,7 +31,7 @@ namespace CubeCastle.Upgrades
         {
             if (!Building.GetComponent<Buildings.BuildingUpgrade>().UpgradeStatus)
             {
-                Building.GetComponent<Buildings.BuildingUpgrade>().Upgrade(Building);
+                Building.GetComponent<Buildings.BuildingUpgrade>().Upgrade(Building, true);
                 CloseUpgradeMenu();
             }
         }
