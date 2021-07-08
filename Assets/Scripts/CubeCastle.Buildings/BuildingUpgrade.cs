@@ -93,7 +93,15 @@ namespace CubeCastle.Buildings
             {
                 slider.GetComponentInChildren<UnityEngine.UI.Slider>().maxValue = timeMax;
                 slider.GetComponentInChildren<UnityEngine.UI.Slider>().value = timeMax - timeToFinish;
-                timeRemaining.text = ((int)timeToFinish).ToString() + "s";
+                if(tsTOFinish.Seconds < 10)
+                {
+                    timeRemaining.text = tsTOFinish.Minutes.ToString() + ":0" + tsTOFinish.Seconds.ToString();
+                }
+                else
+                {
+                    timeRemaining.text = tsTOFinish.Minutes.ToString() + ":" + tsTOFinish.Seconds.ToString();
+                }
+                
             }
         }
 
@@ -105,6 +113,15 @@ namespace CubeCastle.Buildings
         public DateTime GetUpgradeFinish()
         {
             return upgradeFinish;
+        }
+
+        public void SetUpgradeStart(DateTime date)
+        {
+            upgradeStart = date;
+        }
+        public DateTime GetUpgradeStart()
+        {
+            return upgradeStart;
         }
     }
 }

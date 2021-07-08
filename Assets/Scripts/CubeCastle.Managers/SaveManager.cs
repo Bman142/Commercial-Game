@@ -61,10 +61,12 @@ namespace CubeCastle.Managers
 
                     }
                     Manager.Instance.AddtoBuildings(newObject);
-                    if(building.TimeData != null)
+                    if(building.UpgradeFinish != null)
                     {
-                        System.DateTime dateTime = new System.DateTime(building.TimeData[0], building.TimeData[1], building.TimeData[2], building.TimeData[3], building.TimeData[4], building.TimeData[5]);
-                        newObject.GetComponent<Buildings.BuildingUpgrade>().SetUpgradeFinish(dateTime);
+                        System.DateTime upgradeFinish = new System.DateTime(building.UpgradeFinish[0], building.UpgradeFinish[1], building.UpgradeFinish[2], building.UpgradeFinish[3], building.UpgradeFinish[4], building.UpgradeFinish[5]);
+                        System.DateTime upgradeStart = new System.DateTime(building.UpgradeStart[0], building.UpgradeStart[1], building.UpgradeStart[2], building.UpgradeStart[3], building.UpgradeStart[4], building.UpgradeStart[5]);
+                        newObject.GetComponent<Buildings.BuildingUpgrade>().SetUpgradeFinish(upgradeFinish);
+                        newObject.GetComponent<Buildings.BuildingUpgrade>().SetUpgradeStart(upgradeStart);
                         Manager.Instance.AddToUpgrades(newObject);
                         newObject.GetComponent<Buildings.BuildingUpgrade>().Upgrade(newObject, false);
                     }

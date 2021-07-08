@@ -9,11 +9,12 @@ namespace CubeCastle.SaveSystem {
         public int buildingType;
         public int[] position;
         public int resourceAmount;
-        public int[] TimeData;
+        public int[] UpgradeFinish;
+        public int[] UpgradeStart;
 
 
 
-        public BuildingSaveData(Buildings.BuildingData.BuildingStyle buildingStyle, Vector3 positionInput, int resourceAmountInput, bool upgrading, System.DateTime upgradeFinish)
+        public BuildingSaveData(Buildings.BuildingData.BuildingStyle buildingStyle, Vector3 positionInput, int resourceAmountInput, bool upgrading, System.DateTime upgradeFinish, System.DateTime upgradeStart)
         {
             
             switch (buildingStyle)
@@ -44,17 +45,26 @@ namespace CubeCastle.SaveSystem {
             if (upgrading)
             {
                 System.DateTime dateTime = upgradeFinish;
-                TimeData = new int[6];
-                TimeData[0] = dateTime.Year;
-                TimeData[1] = dateTime.Month;
-                TimeData[2] = dateTime.Day;
-                TimeData[3] = dateTime.Hour;
-                TimeData[4] = dateTime.Minute;
-                TimeData[5] = dateTime.Second;
+                UpgradeFinish = new int[6];
+                UpgradeFinish[0] = dateTime.Year;
+                UpgradeFinish[1] = dateTime.Month;
+                UpgradeFinish[2] = dateTime.Day;
+                UpgradeFinish[3] = dateTime.Hour;
+                UpgradeFinish[4] = dateTime.Minute;
+                UpgradeFinish[5] = dateTime.Second;
+                dateTime = upgradeStart;
+                UpgradeStart = new int[6];
+                UpgradeStart[0] = dateTime.Year;
+                UpgradeStart[1] = dateTime.Month;
+                UpgradeStart[2] = dateTime.Day;
+                UpgradeStart[3] = dateTime.Hour;
+                UpgradeStart[4] = dateTime.Minute;
+                UpgradeStart[5] = dateTime.Second;
             }
             else
             {
-                TimeData = null;
+                UpgradeFinish = null;
+                UpgradeStart = null;
             }
 
             
@@ -77,22 +87,7 @@ namespace CubeCastle.SaveSystem {
 
         }
     }
-    [System.Serializable]
-    public struct TimeAndDate
-    {
-        public int[] TimeData;
-
-        public TimeAndDate(System.DateTime dateTime)
-        {
-            TimeData = new int[6];
-            TimeData[0] = dateTime.Year;
-            TimeData[1] = dateTime.Month;
-            TimeData[2] = dateTime.Day;
-            TimeData[3] = dateTime.Hour;
-            TimeData[4] = dateTime.Minute;
-            TimeData[5] = dateTime.Second;
-        }
-    }
+    
     [System.Serializable]
     public class GameData // Resource data to be saved to disk.
     {
@@ -122,7 +117,7 @@ namespace CubeCastle.SaveSystem {
                 //Debug.Log(building.GetComponent<Buildings.BuildingData>());
                 buildingSaveData.Add(new BuildingSaveData(building.GetComponent<Buildings.BuildingData>().BuildingType,
                     building.transform.position, building.GetComponent<Buildings.BuildingData>().ResourceCurrent, manager.isUpgrading(building), 
-                    building.GetComponent<Buildings.BuildingUpgrade>().GetUpgradeFinish()));
+                    building.GetComponent<Buildings.BuildingUpgrade>().GetUpgradeFinish(), building.GetComponent<Buildings.BuildingUpgrade>().GetUpgradeStart()));
             }
 
             List<GameObject> walls = manager.GetWalls();
