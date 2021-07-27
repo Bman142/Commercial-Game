@@ -14,35 +14,35 @@ namespace CubeCastle.Menus
         }
         void StartUpCheck()
         {
-            defenceMenu.SetActive(false);
-            productionMenu.SetActive(false);
+            defenceMenu.GetComponent<Canvas>().enabled = false;
+            productionMenu.GetComponent<Canvas>().enabled = false;
             productionMenuButton.SetActive(true);
             defenceMenuButton.SetActive(true);
         }
         public void LoadDefenceMenu()
         {
-            defenceMenu.SetActive(true);
+            defenceMenu.GetComponent<Canvas>().enabled = true;
             productionMenuButton.SetActive(false);
             defenceMenuButton.SetActive(false);
         }
 
         public void CloseDefenceMenu()
         {
-            defenceMenu.SetActive(false);
+            defenceMenu.GetComponent<Canvas>().enabled = false;
             productionMenuButton.SetActive(true);
             defenceMenuButton.SetActive(true);
         }
 
         public void LoadProductionMenu()
         {
-            productionMenu.SetActive(true);
+            productionMenu.GetComponent<Canvas>().enabled = true;
             productionMenuButton.SetActive(false);
             defenceMenuButton.SetActive(false);
         }
 
         public void CloseProductionMenu()
         {
-            productionMenu.SetActive(false);
+            productionMenu.GetComponent<Canvas>().enabled = false;
             productionMenuButton.SetActive(true);
             defenceMenuButton.SetActive(true);
         }

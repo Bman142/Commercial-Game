@@ -174,7 +174,7 @@ namespace CubeCastle.Managers
         public IEnumerator TextFade(string text)
         {
             notification.text = text;
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.5f);
             notification.text = "";
         }
 

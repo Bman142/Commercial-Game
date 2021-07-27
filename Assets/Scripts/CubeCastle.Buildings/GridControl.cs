@@ -19,24 +19,32 @@ namespace CubeCastle.Buildings
         {
             camera = Camera.main;
             centrePoint = this.transform;
+            InvokeRepeating("GridController", 0, 0.1f);
         }
 
         // Update is called once per frame
         void Update()
         {
+            
+            
+        }
+
+        void GridController()
+        {
             if (building)
             {
-                mousePos.x = Input.mousePosition.x;
-                mousePos.y = Input.mousePosition.y;
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    mousePos = touch.position;
+                    RaycastHit hit;
+                    Physics.Raycast(camera.ScreenPointToRay(mousePos), out hit);
+                    point = hit.point;
+                    point.y = yOffset;
 
-                RaycastHit hit;
-                Physics.Raycast(camera.ScreenPointToRay(mousePos), out hit);
-                point = hit.point;
-                point.y = yOffset;
-
-                centrePoint.position = new Vector3(Mathf.Round(point.x / snapFactor) * snapFactor, point.y, Mathf.Round(point.z / snapFactor) * snapFactor);
+                    centrePoint.position = new Vector3(Mathf.Round(point.x / snapFactor) * snapFactor, point.y, Mathf.Round(point.z / snapFactor) * snapFactor);
+                }
             }
-            
         }
         
     }
