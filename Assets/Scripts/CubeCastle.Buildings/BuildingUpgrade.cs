@@ -67,10 +67,7 @@ namespace CubeCastle.Buildings
 
         }
 
-        private void Update()
-        {
-            
-        }
+        
 
         void UpgradeTimer()
         {
