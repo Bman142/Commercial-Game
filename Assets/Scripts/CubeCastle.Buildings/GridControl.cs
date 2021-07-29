@@ -19,16 +19,10 @@ namespace CubeCastle.Buildings
         {
             camera = Camera.main;
             centrePoint = this.transform;
-            InvokeRepeating("GridController", 0, 0.1f);
+            InvokeRepeating(nameof(GridController), 0, 0.1f);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-            
-        }
-
+        
         void GridController()
         {
             if (building)

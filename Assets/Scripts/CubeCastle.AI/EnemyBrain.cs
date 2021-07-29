@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+//TODO: Code Refactor
 namespace CubeCastle.AI
 {
     public class EnemyBrain : MonoBehaviour

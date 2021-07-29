@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//TODO: Add Analytics Events
 namespace CubeCastle.Buildings
 {
     public class BuildingControl : MonoBehaviour
     {
         [SerializeField] bool building = true;
         [SerializeField] BuildingData.BuildingStyle buildingType;
+        
         Menus.InstansiateButton button;
         public Menus.InstansiateButton Button { get { return button; } set { button = value; } }
 
@@ -15,19 +18,14 @@ namespace CubeCastle.Buildings
         // Start is called before the first frame update
         void Start()
         {
-            InvokeRepeating("BuildingController", 0, 0.1f);
+            InvokeRepeating(nameof(BuildingController), 0, 0.1f);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-
-        }
+        
 
         void BuildingController()
         {
-            if (building)                                                                                       // Is the building still being built?
+            if (building)                                                                                // Is the building still being built?
             {
                 if (Input.touchCount > 0)                                                                // Is left mouse button down?
                 {

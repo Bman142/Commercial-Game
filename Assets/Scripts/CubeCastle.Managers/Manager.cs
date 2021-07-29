@@ -42,6 +42,7 @@ namespace CubeCastle.Managers
         }
         void DeleteSave()
         {
+            //TODO: Allow to be Called from button for easy testing
             if (deleteSaveData) { File.Delete(Application.persistentDataPath + "/gameData.bin"); deleteSaveData = false; }
         }
         void SingletonSetup() // Set singleton reference
@@ -63,6 +64,7 @@ namespace CubeCastle.Managers
         void Start()
         {
             StartUpCheck();
+            InvokeRepeating(nameof(ResourceTimer), 0, 0.1f);
         }
         void StartUpCheck() // Ensure starting variables are set correctly
         {
@@ -179,21 +181,20 @@ namespace CubeCastle.Managers
         }
 
 
-        // Update is called once per frame
-        void Update()
+        
+
+        void ResourceTimer()
         {
             timer += Time.deltaTime;
-            if(timer > timeOfNextGather)
+            if (timer > timeOfNextGather)
             {
-                foreach(GameObject building in buildings)
+                foreach (GameObject building in buildings)
                 {
                     building.GetComponent<Buildings.BuildingData>().ResourceGather();
-                    
+
                 }
                 timeOfNextGather += timeBetweenGathers;
             }
-            
-
         }
 
       

@@ -62,7 +62,8 @@ namespace CubeCastle.Buildings
             }
             Debug.Log(upgradeFinish);
             timeRemaining = slider.GetComponentInChildren<TextMeshProUGUI>();
-            InvokeRepeating("UpgradeTimer", 0, 0.1f);
+            InvokeRepeating(nameof(UpgradeTimer), 0, 0.1f);
+            
 
         }
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+
+//TODO: Fix Save to Work on Tablet
 namespace CubeCastle.Managers
 {
     public class SaveManager : MonoBehaviour
@@ -10,8 +12,10 @@ namespace CubeCastle.Managers
         [SerializeField] GameObject house, mill, mine, wall;
         private void Awake()
         {
+            Debug.Log("Checking for Save Data");
             SaveSystem.GameData data = SaveSystem.Saving.LoadData();
             if (data != null){
+                Debug.Log("Save Data Found");
                 // Setting Resources on Start up from save
                 ResourceManager.Instance.SetGold(data.gold);
                 ResourceManager.Instance.SetWood(data.wood);
@@ -84,11 +88,15 @@ namespace CubeCastle.Managers
 
                 
             }
+            else
+            {
+                Debug.Log("Save Data Not Found");
+            }
         }
 
         private void OnApplicationQuit()
         {
-            //Debug.Log("Closing");
+            Debug.Log("Closing");
             SaveSystem.Saving.SaveData(ResourceManager.Instance, Manager.Instance);
         }
     }

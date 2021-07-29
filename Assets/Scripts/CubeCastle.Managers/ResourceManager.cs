@@ -113,10 +113,6 @@ namespace CubeCastle.Managers
         {
             return maxWood;
         }
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }

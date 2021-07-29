@@ -11,13 +11,10 @@ namespace CubeCastle.Upgrades
                                          
         private void Start()
         {
-            InvokeRepeating("ResourceUpdater", 0, 0.1f);
+            InvokeRepeating(nameof(ResourceUpdater), 0, 0.1f);
         }
 
-        private void Update()
-        {
-            
-        }
+        
 
         void ResourceUpdater()
         {
