@@ -16,12 +16,18 @@ namespace CubeCastle.Managers
             SaveSystem.GameData data = SaveSystem.Saving.LoadData();
             if (data != null){
                 Debug.Log("Save Data Found");
-                // Setting Resources on Start up from save
+                //Setting Resources on Start up from save
+                Debug.Log("Gold: " + data.gold);
                 ResourceManager.Instance.SetGold(data.gold);
+                Debug.Log("Wood: " + data.wood);
                 ResourceManager.Instance.SetWood(data.wood);
+                Debug.Log("Available Population: " + data.availPop);
                 ResourceManager.Instance.SetAvailPop(data.availPop);
+                Debug.Log("Total Population: " + data.totalPop);
                 ResourceManager.Instance.SetTotalPop(data.totalPop);
+                Debug.Log("Max Gold: " + data.maxGold);
                 ResourceManager.Instance.SetMaxGold(data.maxGold);
+                Debug.Log("Max Wood: " + data.maxWood);
                 ResourceManager.Instance.SetMaxWood(data.maxWood);
 
                 // Placing Buildings in correct positions on start up and setting variables in buildings
@@ -92,12 +98,13 @@ namespace CubeCastle.Managers
             {
                 Debug.Log("Save Data Not Found");
             }
+            InvokeRepeating(nameof(Save), 0, 2f);
         }
-
-        private void OnApplicationQuit()
+        void Save()
         {
-            Debug.Log("Closing");
             SaveSystem.Saving.SaveData(ResourceManager.Instance, Manager.Instance);
         }
+
+      
     }
 }

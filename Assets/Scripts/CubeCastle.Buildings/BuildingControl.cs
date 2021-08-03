@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 
 //TODO: Add Analytics Events
@@ -37,7 +38,7 @@ namespace CubeCastle.Buildings
 
                             if (!Managers.Manager.Instance.CheckWallPositions(this.gameObject))
                             {
-                                switch (buildingType)                                                                   // Subtract the right amount of resources dependant on building
+                                switch (buildingType)              // Subtract the right amount of resources dependant on building
                                 {
 
                                     case BuildingData.BuildingStyle.House:
@@ -45,6 +46,7 @@ namespace CubeCastle.Buildings
                                         {
                                             Managers.Manager.Instance.AddtoHouses(this.gameObject);
                                             Managers.ResourceManager.Instance.TakeGold(20);
+                                            Analytics.CustomEvent("Build House");
                                             SetBuilding();
                                         }
                                         else
@@ -57,6 +59,7 @@ namespace CubeCastle.Buildings
                                         {
                                             Managers.Manager.Instance.AddtoMills(this.gameObject);
                                             Managers.ResourceManager.Instance.TakePopulation(5);
+                                            Analytics.CustomEvent("Build Mill");
                                             SetBuilding();
                                         }
                                         else
@@ -69,6 +72,7 @@ namespace CubeCastle.Buildings
                                         {
                                             Managers.Manager.Instance.AddtoMines(this.gameObject);
                                             Managers.ResourceManager.Instance.TakeWood(20);
+                                            Analytics.CustomEvent("Build Mine");
                                             SetBuilding();
                                         }
                                         else
@@ -78,6 +82,7 @@ namespace CubeCastle.Buildings
                                         break;
                                     case BuildingData.BuildingStyle.Wall:
                                         Managers.Manager.Instance.AddToWalls(this.gameObject);
+                                        Analytics.CustomEvent("Build Wall");
                                         SetBuilding();
                                         break;
                                 }

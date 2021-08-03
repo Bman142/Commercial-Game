@@ -6,7 +6,7 @@ namespace CubeCastle.Menus
 {
     public class MenuSelector : MonoBehaviour
     {
-        [SerializeField] GameObject productionMenu, defenceMenu, productionMenuButton, defenceMenuButton;
+        [SerializeField] GameObject productionMenu, defenceMenu, premiumMenu, productionMenuButton, defenceMenuButton, premiumMenuButton;
 
         void Awake()
         {
@@ -16,14 +16,17 @@ namespace CubeCastle.Menus
         {
             defenceMenu.GetComponent<Canvas>().enabled = false;
             productionMenu.GetComponent<Canvas>().enabled = false;
+            premiumMenu.GetComponent<Canvas>().enabled = false;
             productionMenuButton.SetActive(true);
             defenceMenuButton.SetActive(true);
+            premiumMenuButton.SetActive(true);
         }
         public void LoadDefenceMenu()
         {
             defenceMenu.GetComponent<Canvas>().enabled = true;
             productionMenuButton.SetActive(false);
             defenceMenuButton.SetActive(false);
+            premiumMenuButton.SetActive(false);
         }
 
         public void CloseDefenceMenu()
@@ -31,6 +34,7 @@ namespace CubeCastle.Menus
             defenceMenu.GetComponent<Canvas>().enabled = false;
             productionMenuButton.SetActive(true);
             defenceMenuButton.SetActive(true);
+            premiumMenuButton.SetActive(true);
         }
 
         public void LoadProductionMenu()
@@ -38,6 +42,7 @@ namespace CubeCastle.Menus
             productionMenu.GetComponent<Canvas>().enabled = true;
             productionMenuButton.SetActive(false);
             defenceMenuButton.SetActive(false);
+            premiumMenuButton.SetActive(false);
         }
 
         public void CloseProductionMenu()
@@ -45,6 +50,23 @@ namespace CubeCastle.Menus
             productionMenu.GetComponent<Canvas>().enabled = false;
             productionMenuButton.SetActive(true);
             defenceMenuButton.SetActive(true);
+            premiumMenuButton.SetActive(true);
+        }
+
+        public void LoadPremiumMenu()
+        {
+            premiumMenu.GetComponent<Canvas>().enabled = true;
+            productionMenuButton.SetActive(false);
+            defenceMenuButton.SetActive(false);
+            premiumMenuButton.SetActive(false);
+        }
+
+        public void ClosePremiumMenu()
+        {
+            premiumMenu.GetComponent<Canvas>().enabled = false;
+            productionMenuButton.SetActive(true);
+            defenceMenuButton.SetActive(true);
+            premiumMenuButton.SetActive(true);
         }
 
     }

@@ -37,14 +37,9 @@ namespace CubeCastle.Managers
         {
             SingletonSetup();
             //instance = instance != null ? instance != this ? Destroy(this.gameObject) : instance = null :  instance = this;
-            DeleteSave();
             
         }
-        void DeleteSave()
-        {
-            //TODO: Allow to be Called from button for easy testing
-            if (deleteSaveData) { File.Delete(Application.persistentDataPath + "/gameData.bin"); deleteSaveData = false; }
-        }
+        
         void SingletonSetup() // Set singleton reference
         {
             if (instance != null)
@@ -176,7 +171,7 @@ namespace CubeCastle.Managers
         public IEnumerator TextFade(string text)
         {
             notification.text = text;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(2f);
             notification.text = "";
         }
 
