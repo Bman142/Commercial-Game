@@ -13,10 +13,11 @@ namespace CubeCastle
         {
             DrawDefaultInspector();
 
-            CubeCastle.DeleteSave deleteSave = (DeleteSave)target;
+            DeleteSave deleteSave = (DeleteSave)target;
             if (GUILayout.Button("Delete Save"))
             {
                 deleteSave.DeleteSaveData();
+                Debug.Log("Save Deleted");
             }
         }
     }

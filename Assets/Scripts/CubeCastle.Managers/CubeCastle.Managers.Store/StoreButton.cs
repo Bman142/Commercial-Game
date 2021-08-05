@@ -10,9 +10,16 @@ namespace CubeCastle.Managers.Store
 
         public void BuyWood(int amount)
         {
-            if (StoreManager.Instance.TakeCurrency(currencyAmount))
+            if (StoreManager.Instance.TakeCurrency(currencyAmount, ResourceManager.Instance.GetStoredWood + amount <= ResourceManager.Instance.GetMaxWood()))
             {
-                ResourceManager.Instance.AddWood(amount);
+                if (ResourceManager.Instance.GetStoredWood + amount <= ResourceManager.Instance.GetMaxWood())
+                { 
+                    ResourceManager.Instance.AddWood(amount); 
+                }
+                else
+                {
+                    Debug.Log("Insufficent Storage");
+                }
             }
             else
             {
@@ -21,9 +28,16 @@ namespace CubeCastle.Managers.Store
         }
         public void BuyGold(int amount)
         {
-            if (StoreManager.Instance.TakeCurrency(currencyAmount))
+            if (StoreManager.Instance.TakeCurrency(currencyAmount, ResourceManager.Instance.GetStoredGold + amount <= ResourceManager.Instance.GetMaxGold()))
             {
-                ResourceManager.Instance.AddGold(amount);
+                if (ResourceManager.Instance.GetStoredGold + amount <= ResourceManager.Instance.GetMaxGold())
+                {
+                    ResourceManager.Instance.AddGold(amount);
+                }
+                else
+                {
+                    Debug.Log("Insufficent Storage");
+                }
             }
             else
             {

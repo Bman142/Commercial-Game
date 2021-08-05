@@ -30,8 +30,9 @@ namespace CubeCastle.Managers.Store
             }
             DontDestroyOnLoad(this);
         }
-        public bool TakeCurrency(int amount)
+        public bool TakeCurrency(int amount, bool resourceStorageVaild)
         {
+            if (!resourceStorageVaild) { return false; }
             if(premiumCurrency - amount  < 0) 
             {
                 //premiumCurrency += amount;

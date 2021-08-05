@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d1048821bc85f4baa8bcee1acd9397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level1Mesh: {fileID: -2432090755550338912, guid: 5bd17d4be7022a94aafc92798645407c, type: 3}
+  level2Mesh: {fileID: -2432090755550338912, guid: 2dff6d137dfef9849a94e0d90c93b404, type: 3}
   buildingType: 0
   buildingLevel: 1
   resourcePerTime: 0
@@ -164,4 +166,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}

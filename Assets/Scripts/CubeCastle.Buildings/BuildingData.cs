@@ -7,6 +7,8 @@ namespace CubeCastle.Buildings
 {
     public class BuildingData : MonoBehaviour
     {
+
+        [SerializeField] Mesh level1Mesh, level2Mesh;
         public enum BuildingStyle { House, Mine, Mill, Wall}
         [SerializeField] BuildingStyle buildingType;
         public BuildingStyle BuildingType { get { return buildingType; } set { buildingType = value; } }
@@ -21,11 +23,26 @@ namespace CubeCastle.Buildings
 
         [SerializeField] GameObject Popup;
         GameObject popup = null;
+
+        MeshFilter r;
         private void Start()
         {
+            r = this.GetComponent<MeshFilter>();
+
+            switch (buildingLevel)
+            {
+                case 1:
+                    r.mesh = level1Mesh;
+                    break;
+                case 2:
+                    r.mesh = level2Mesh;
+                    break;
+            }
             
+
             switch (buildingType)                                           // Set variables based on what type of building it is
             {
+                //TODO: Check Save System Compatability
                 case BuildingStyle.House:
                     resourcePerTime = 0;
                     resourceMax = 5;
@@ -47,25 +64,31 @@ namespace CubeCastle.Buildings
         }
         public void IncreaseBuildingLevel()
         {
-            buildingLevel += 1;
-            if(buildingLevel > 3) 
-            { 
-                buildingLevel = 3;
-                return;
+            if(buildingLevel == 3) { return; }
+
+            switch (buildingType)
+            {
+                case BuildingStyle.House:
+                    Managers.ResourceManager.Instance.AddPopulation(resourceMax);
+                    break;
+                case BuildingStyle.Mill:
+                    Managers.ResourceManager.Instance.IncreaseMaxWood = resourceMax;
+                    break;
+                case BuildingStyle.Mine:
+                    Managers.ResourceManager.Instance.IncreaseMaxGold = resourceMax;
+                    break;
             }
+            buildingLevel += 1;
             resourceMax += resourceMax;
             resourcePerTime += resourcePerTime;
-            if(buildingType == BuildingStyle.House)
+            switch (buildingLevel)
             {
-                Managers.ResourceManager.Instance.AddPopulation(resourceMax / 2);
-            }
-            else if(buildingType == BuildingStyle.Mill)
-            {
-                Managers.ResourceManager.Instance.IncreaseMaxWood = resourceMax / 2;
-            }
-            else if(buildingType == BuildingStyle.Mine)
-            {
-                Managers.ResourceManager.Instance.IncreaseMaxGold = resourceMax / 2;
+                case 1:
+                    r.mesh = level1Mesh;
+                    break;
+                case 2:
+                    r.mesh = level2Mesh;
+                    break;
             }
 
             /* Future Plans:
