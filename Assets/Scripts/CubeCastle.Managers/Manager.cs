@@ -18,10 +18,11 @@ namespace CubeCastle.Managers
         public static Manager Instance { get { return instance; } }
 
 
-        [SerializeField] TextMeshProUGUI notification;                      // Text box used for notifications
-        public TextMeshProUGUI Notification { get { return notification; } }
+        [SerializeField] TextMeshProUGUI notification1;                      // Text box used for notifications
+		[SerializeField] TextMeshProUGUI notification2;
+        
 
-        [SerializeField] bool buildingMode = false;                                          // Wether the game should be treated in building mode or not
+		[SerializeField] bool buildingMode = false;                                          // Wether the game should be treated in building mode or not
         public bool BuildingMode { get { return buildingMode; } set { buildingMode = value; } }
 
         [SerializeField] Canvas canvas;
@@ -170,9 +171,11 @@ namespace CubeCastle.Managers
         }
         public IEnumerator TextFade(string text)
         {
-            notification.text = text;
+            notification1.text = text;
+            notification2.text = text;
             yield return new WaitForSeconds(2f);
-            notification.text = "";
+            notification1.text = "";
+            notification2.text = "";
         }
 
 

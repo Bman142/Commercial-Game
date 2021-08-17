@@ -23,14 +23,14 @@ namespace CubeCastle
             timeOfNextAttack += timeBetweenAttacks;
         }
 
-        void Attack()
+        public void Attack()
         {
             GameObject newEnemy;
             int enemies = Random.Range(1, 10);
             for(int i = 1; i <= enemies; i++)
             {
                 newEnemy = Instantiate(enemyPrefab);
-                newEnemy.transform.position = this.transform.position;
+                newEnemy.transform.position = this.transform.position + new Vector3(0,10,0);
                 newEnemy.name.Replace("(Clone)", "");
             }
             OnAttack();

@@ -7,7 +7,7 @@ namespace CubeCastle.Upgrades
 {
     public class UpdateResource : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI woodStat, avalStat, totalStat, goldStat, premiumStat; // Text that displays the resource value
+        [SerializeField] TextMeshProUGUI woodStat1, woodStat2, avalStat1, avalStat2, totalStat1, totalStat2, goldStat1, goldStat2, premiumStat1, premiumStat2; // Text that displays the resource value
                                          
         private void Start()
         {
@@ -18,17 +18,24 @@ namespace CubeCastle.Upgrades
 
         void ResourceUpdater()
         {
-            avalStat.text = "Avalible Population: " + Managers.ResourceManager.Instance.GetAvailablePopulation.ToString();
-                   
-            totalStat.text = "Total Population: " + Managers.ResourceManager.Instance.GetTotalPopulation.ToString();
-                   
-            woodStat.text = "Wood: " + Managers.ResourceManager.Instance.GetStoredWood.ToString();
+            avalStat1.text = "Avalible Population: " + Managers.ResourceManager.Instance.GetAvailablePopulation.ToString();
 
-            goldStat.text = "Gold: " + Managers.ResourceManager.Instance.GetStoredGold.ToString();
+            avalStat2.text = "Avalible Population: " + Managers.ResourceManager.Instance.GetAvailablePopulation.ToString();
 
-            premiumStat.text = "Gems: " + Managers.Store.StoreManager.Instance.PremiumCurrency.ToString();
-                    
-            
+            totalStat1.text = "Total Population: " + Managers.ResourceManager.Instance.GetTotalPopulation.ToString();
+            totalStat2.text = "Total Population: " + Managers.ResourceManager.Instance.GetTotalPopulation.ToString();
+                   
+            woodStat1.text = "Wood: " + Managers.ResourceManager.Instance.GetStoredWood.ToString();
+            woodStat2.text = "Wood: " + Managers.ResourceManager.Instance.GetStoredWood.ToString();
+
+            goldStat1.text = "Gold: " + Managers.ResourceManager.Instance.GetStoredGold.ToString();
+            goldStat2.text = "Gold: " + Managers.ResourceManager.Instance.GetStoredGold.ToString();
+
+            premiumStat1.text = "Gems: " + Managers.Store.StoreManager.Instance.PremiumCurrency.ToString();
+
+            premiumStat2.text = "Gems: " + Managers.Store.StoreManager.Instance.PremiumCurrency.ToString();
+
+
         }
     }
 }

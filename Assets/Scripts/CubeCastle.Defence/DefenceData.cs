@@ -19,5 +19,19 @@ namespace CubeCastle.Defence
             if(hp == 0) { Destroy(this.gameObject); }
         }
 
+		private void Awake()
+		{
+            InvokeRepeating(nameof(Attack), 0, 1f);
+		}
+
+		public void Attack()
+		{
+            if(damage == 0) { return; }
+
+            Collider[] colliders = Physics.OverlapBox(this.transform.position, new Vector3(10,10,10));
+            GameObject target = colliders[Random.Range(0, colliders.Length)].gameObject;
+            target.GetComponent<AI.EnemyBrain>().TakeDamage(damage);
+		}
+
     }
 }

@@ -13,34 +13,37 @@ namespace CubeCastle.AI
         [SerializeField] NavMeshAgent agent;
         [SerializeField] int damage;
         [SerializeField] int hp;
+        List<GameObject> walls;
 
-        float timeBetweenAttacks = 2f;
-        float timeofNextAttack;
-        float timer;
         void Awake()
         {
-            List<GameObject> walls = Managers.Manager.Instance.GetWalls();
+            walls = Managers.Manager.Instance.GetWalls();
             Target = walls[Random.Range(0, walls.Count)];
             agent.SetDestination(Target.transform.position);
+            InvokeRepeating(nameof(AttackTimer), 0, 1f);
         }
-        void Update()
-        {
-            timer += Time.deltaTime;
-            if(Vector3.Distance(Target.transform.position, this.transform.position) <= 1)
+        
+        void AttackTimer()
+		{
+            
+            Debug.Log(Vector3.Distance(Target.transform.position, this.transform.position));
+            if (Vector3.Distance(Target.transform.position, this.transform.position) <= 10)
             {
-                if(timer >= timeofNextAttack)
-                {
-                    Attack();
-                    timeofNextAttack += timeBetweenAttacks;
-
-                }
-                
+                Attack();
             }
         }
 
         void Attack()
         {
-            Target.GetComponent<Defence.DefenceData>().TakeDamage(damage);
+            if (Target == null)
+            {
+                Target = walls[Random.Range(0, walls.Count)];
+                agent.SetDestination(Target.transform.position);
+            }
+            else
+            {
+                Target.GetComponent<Defence.DefenceData>().TakeDamage(damage);
+            }
         }
 
         public void TakeDamage(int damageTaken)

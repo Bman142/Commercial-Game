@@ -18,12 +18,21 @@ namespace CubeCastle.Managers.Store
                 }
                 else
                 {
-                    Debug.Log("Insufficent Storage");
+                    Debug.Log("Transaction Failed");
+                    StartCoroutine(Manager.Instance.TextFade("Transaction Declined. \nInsufficent Storage"));
                 }
             }
             else
             {
-                Debug.Log("Insufficent Funds");
+                Debug.Log("Transaction Failed");
+                if (ResourceManager.Instance.GetStoredWood + amount <= ResourceManager.Instance.GetMaxWood())
+                {
+                    StartCoroutine(Manager.Instance.TextFade("Transaction Declined. \nInsufficent Funds"));
+                }
+				else
+				{
+                    StartCoroutine(Manager.Instance.TextFade("Transaction Declined. \nInsufficent Storage"));
+                }
             }
         }
         public void BuyGold(int amount)
@@ -36,12 +45,21 @@ namespace CubeCastle.Managers.Store
                 }
                 else
                 {
-                    Debug.Log("Insufficent Storage");
+                    Debug.Log("Transaction Failed");
+                    StartCoroutine(Manager.Instance.TextFade("Transaction Declined. \nInsufficent Storage"));
                 }
             }
             else
             {
-                Debug.Log("Insufficent Funds");
+                Debug.Log("Transaction Failed");
+                if (ResourceManager.Instance.GetStoredWood + amount <= ResourceManager.Instance.GetMaxWood())
+                {
+                    StartCoroutine(Manager.Instance.TextFade("Transaction Declined. \nInsufficent Funds"));
+                }
+                else
+                {
+                    StartCoroutine(Manager.Instance.TextFade("Transaction Declined. \nInsufficent Storage"));
+                }
             }
         }
 
