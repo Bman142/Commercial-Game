@@ -63,14 +63,11 @@ namespace CubeCastle.Managers
             InvokeRepeating(nameof(ResourceTimer), 0, 0.1f);
         }
         void StartUpCheck() // Ensure starting variables are set correctly
-        {
-            
-            
-                
-                if (ResourceManager.Instance.GetAvailablePopulation != 5) //TODO: fix to work with save mechanics
-                {
-                    ResourceManager.Instance.AddPopulation(5);
-                } 
+        {  
+            if (ResourceManager.Instance.GetAvailablePopulation != 5) //TODO: fix to work with save mechanics
+            {
+                ResourceManager.Instance.AddPopulation(5);
+            } 
            
             if(houses.Count == 0)
             {
