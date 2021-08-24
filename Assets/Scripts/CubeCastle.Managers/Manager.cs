@@ -65,13 +65,13 @@ namespace CubeCastle.Managers
         void StartUpCheck() // Ensure starting variables are set correctly
         {
             
-            if (!File.Exists(Application.persistentDataPath + "/gameData.bin"))
-                {
+            
+                
                 if (ResourceManager.Instance.GetAvailablePopulation != 5) //TODO: fix to work with save mechanics
                 {
                     ResourceManager.Instance.AddPopulation(5);
                 } 
-            }
+           
             if(houses.Count == 0)
             {
                 Debug.LogError("Starting House Not Added to Houses List");

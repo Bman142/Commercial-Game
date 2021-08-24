@@ -23086,7 +23086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1771693820046194959, guid: 5c65b15c727294b419d6be80df997b40, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5052201266184009261, guid: 5c65b15c727294b419d6be80df997b40, type: 3}
       propertyPath: m_SizeDelta.x
@@ -63493,7 +63493,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701052566}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
