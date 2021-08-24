@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8569231620867230880}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: 0c5535880802d834b8b37121b10863ad, type: 3}
 --- !u!23 &948782288522814565
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ed17c0a4724280a47955b5c64d68842b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b8d13bb6f573c4d8d92656d4379413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 5
   hp: 10
 --- !u!114 &4663682220955617648
 MonoBehaviour:
@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d1048821bc85f4baa8bcee1acd9397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  level2Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  level1Mesh: {fileID: -2432090755550338912, guid: 0c5535880802d834b8b37121b10863ad, type: 3}
+  level2Mesh: {fileID: -2432090755550338912, guid: 0c5535880802d834b8b37121b10863ad, type: 3}
   buildingType: 3
   buildingLevel: 1
   resourcePerTime: 0
