@@ -8237,10 +8237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8987f5a8b2455346a4840b85d97332a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  house: {fileID: 7059954525776759755, guid: 3bbcb2dcb5662f44b85c21828b77e97e, type: 3}
-  mill: {fileID: 189118479704760436, guid: 57d7d443bbe1a3849b5eb606468aa90c, type: 3}
-  mine: {fileID: 3252899755819304401, guid: 554e1a62b7957b34885a293a13158372, type: 3}
-  wall: {fileID: 8569231620867230880, guid: 4273deb5591dc834e9015fd66648ce38, type: 3}
 --- !u!114 &211006008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23088,6 +23084,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4409560667295411303, guid: 5c65b15c727294b419d6be80df997b40, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce623ccbd0b52bf4b9e1e05b6c2d0dbe, type: 3}
     - target: {fileID: 5052201266184009261, guid: 5c65b15c727294b419d6be80df997b40, type: 3}
       propertyPath: m_SizeDelta.x
       value: 615

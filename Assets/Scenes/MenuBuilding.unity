@@ -580,5 +580,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Premium Store
       objectReference: {fileID: 0}
+    - target: {fileID: 4409560667295411303, guid: 5c65b15c727294b419d6be80df997b40, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce623ccbd0b52bf4b9e1e05b6c2d0dbe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c65b15c727294b419d6be80df997b40, type: 3}
